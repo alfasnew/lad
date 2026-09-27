@@ -190,7 +190,7 @@ nav a:hover{color:#fff}
 .fnode.on .fi{background:var(--green);border-color:var(--green);color:#fff}
 .fnode b{display:block;font-family:var(--f-d);font-weight:700;font-size:16px;letter-spacing:-.02em}
 .fnode span{font-size:14px;color:var(--ink-2)}
-.price-grid{display:grid;grid-template-columns:1.15fr repeat(3,1fr);gap:16px;margin-top:34px}
+.price-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px;margin-top:34px}
 @media(max-width:1060px){.price-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.price-grid{grid-template-columns:1fr}}
 .pstart{background:var(--green-soft);border:1px solid #CFE3D6;border-radius:var(--r);padding:24px 22px;
@@ -205,6 +205,7 @@ nav a:hover{color:#fff}
 .ptier ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
 .ptier li{display:flex;gap:9px;font-size:14px;color:var(--ink-2)}
 .ptier li svg{flex:none;color:var(--green);margin-top:3px}
+.pnote{margin-top:20px;font-size:14px;color:var(--ink-3);line-height:1.6;max-width:78ch}
 
 /* кому підійде */
 .fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -289,6 +290,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
     <nav>
       <a href="#produkt">Про продукт</a>
       <a href="#proces">Як це працює</a>
+      <a href="#tsiny">Ціни</a>
       <a href="#bezpeka">Безпека</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -411,7 +413,8 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       <span class="eyebrow">Як це відбувається</span>
       <h2 style="margin-top:14px">Запускаємо систему за 30 днів</h2>
       <p class="lede">Результат через 30 днів — не макет і не демо.
-        Ви вже працюєте у своїй системі.</p>
+        Ви вже працюєте у своїй системі. Розробка і два перші місяці
+        входять в один стартовий платіж — скільки це коштує, нижче.</p>
     </div>
     <div class="steps">
       <div class="stp"><div class="n">01</div><h3>Розбираємо ваш процес</h3>
@@ -423,6 +426,57 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       <div class="stp"><div class="n">04</div><h3>Доробляємо</h3>
         <p>Перший місяць збираємо зауваження і безкоштовно виправляємо незручне.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ЦІНИ -->
+<section id="tsiny">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Ціни</span>
+      <h2 style="margin-top:14px">Стартовий платіж, далі — фіксована підписка</h2>
+      <p class="lede">$100 ви платите один раз — за розробку системи під ваш бізнес.
+        Перші два місяці, збірка і правки, входять у цей платіж.
+        З третього місяця — підписка, і її розмір залежить тільки від того,
+        скільки людей працює в системі.</p>
+    </div>
+    <div class="flow">
+      <div class="fnode on"><span class="fi">1</span><span><b>Місяць 1</b><span>Розбираємо процес, збираємо і запускаємо систему</span></span></div>
+      <div class="fnode on"><span class="fi">2</span><span><b>Місяць 2</b><span>Працюєте і кажете, що незручно — правимо безкоштовно</span></span></div>
+      <div class="fnode"><span class="fi">$</span><span><b>Місяць 3 і далі</b><span>Підписка від $60 на місяць</span></span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="price-grid">
+      <div class="pstart">
+        <span class="lbl">Старт, одноразово</span>
+        <span class="amt">$100</span>
+        <p>Розробка системи під ваш процес і запуск. Перші два місяці роботи
+          вже входять у цей платіж — щомісячна оплата починається з третього.</p>
+      </div>
+      <div class="ptier">
+        <p class="amt">$60 / місяць</p>
+        <p class="u">до 15 користувачів</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Весь функціонал без урізань</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Підтримка і дрібні доробки</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Оновлення і резервні копії</li>
+        </ul>
+      </div>
+      <div class="ptier">
+        <p class="amt">$80 / місяць</p>
+        <p class="u">до 40 користувачів</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Весь функціонал без урізань</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Підтримка і дрібні доробки</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Оновлення і резервні копії</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pnote">Пакети відрізняються тільки кількістю людей у системі — функціонал однаковий.
+      Рахуються лише співробітники, які в неї заходять: ваші клієнти й підрядники безкоштовні.
+      Якщо в команді більше 40 людей, порахуємо окремо.</p>
   </div>
 </section>
 
@@ -471,9 +525,6 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
     </div>
   </div>
 </section>
-
-<!-- ЦІНИ — блок тимчасово прихований на прохання замовника.
-     Повернути: git show HEAD~1:index.html (секція id="tsiny") -->
 
 <!-- КОМУ ПІДІЙДЕ -->
 <section style="background:var(--bg-2)">
@@ -526,6 +577,11 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       <details open><summary>Скільки часу займає впровадження?</summary>
         <div class="ans">30 днів: тиждень на розбір процесу, тиждень на збірку з вашими даними,
           далі запуск і місяць безкоштовних правок.</div></details>
+      <details><summary>Що входить у стартові $100?</summary>
+        <div class="ans">Розбір вашого процесу, розробка системи під нього, перенесення
+          потрібних даних, налаштування ролей і доступів, навчання команди та два перші
+          місяці роботи з безкоштовними правками. Щомісячна оплата починається
+          з третього місяця.</div></details>
       <details><summary>Чи потрібні технічні знання з нашого боку?</summary>
         <div class="ans">Ні. Сервер оформлюємо й налаштовуємо ми, ви тільки оплачуєте його
           напряму провайдеру. Команду навчаємо по ролях: керівнику — одне, виконавцю — дві дії.</div></details>
@@ -551,7 +607,8 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       <span class="eyebrow">Отримати демо</span>
       <h2 style="margin-top:14px">Покажемо, як CRM може виглядати у вашому бізнесі</h2>
       <p class="lede">Залиште ім'я та зручний контакт. Повернемось протягом доби
-        і покажемо живу систему, а не презентацію.</p>
+        і покажемо живу систему, а не презентацію. Розмова і демо безкоштовні —
+        стартовий платіж тільки після того, як домовимось, що саме збираємо.</p>
     </div>
     <div class="formcard">
       <form id="lead">
