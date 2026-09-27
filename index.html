@@ -6,7 +6,7 @@
 <title>LAD — розробимо CRM з нуля під ваш бізнес</title>
 <meta name="description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Розробка з нуля під ваш процес, запуск за 30 днів. Дані на вашому сервері.">
 <meta name="theme-color" content="#101511">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F7D4F'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3E%D0%9B%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F7D4F'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LAD — розробимо CRM з нуля під ваш бізнес">
 <meta property="og:description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Розробка з нуля під ваш процес, запуск за 30 днів.">
@@ -272,14 +272,22 @@ details[open] summary::after{content:"–"}
 .formcard .btn{width:100%;justify-content:center;font-size:15.5px;padding:14px}
 .formcard .sm{font-size:12.5px;color:var(--ink-3);margin-top:12px;text-align:center}
 .formcard .ferr{font-size:13px;color:#C0392B;margin:-6px 0 14px;line-height:1.4}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:2px 0 16px;font-size:12.5px;
+  color:var(--ink-2);line-height:1.5;cursor:pointer}
+.consent input{width:16px;height:16px;flex:none;margin:2px 0 0;accent-color:var(--green);padding:0}
+.consent a{color:var(--green-d);text-decoration:underline;text-underline-offset:2px}
 .formcard input[aria-invalid="true"]{border-color:#C0392B}
 .ok{background:var(--green-soft);border:1px solid #CFE3D6;border-radius:var(--r-sm);
   padding:16px 18px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
 .ok b{color:var(--green-d);font-family:var(--f-d);display:block;margin-bottom:4px}
 
-footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:26px 0 34px}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer p{font-size:12.5px;color:var(--on-dark-2)}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:30px 0 36px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:12.5px;color:var(--on-dark-2);margin:0 0 5px}
+footer a{color:var(--on-dark-2);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22)}
+footer a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
+footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.75);
+  border-radius:5px;padding:0 6px;color:#E3C468}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -290,12 +298,12 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
     <a class="logo" href="#top"><b>LAD</b><i>Системи управління бізнесом</i></a>
     <nav>
       <a href="#produkt">Про продукт</a>
-      <a href="#proces">Як це працює</a>
+      <a href="#proces">Порядок роботи</a>
       <a href="#tsiny">Ціни</a>
       <a href="#bezpeka">Безпека</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn white" href="#demo">Отримати демо <span class="ar">→</span></a>
+    <a class="btn white" href="#demo">Показати систему <span class="ar">→</span></a>
   </div>
 </header>
 
@@ -320,7 +328,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       під ваш процес: клієнти, заявки, задачі, замовлення, команда та звіти в одному місці.
     </p>
     <div class="btnrow">
-      <a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a>
+      <a class="btn" href="#demo">Показати систему <span class="ar">→</span></a>
       <a class="btn line" href="#vyglyad">Обговорити свій процес</a>
     </div>
   </div>
@@ -334,7 +342,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       <h2 style="margin-top:14px">Вся робота по проектах на одному екрані</h2>
       <p class="lede">Заявки, задачі, відповідальні, дедлайни та бюджет — в одному
         зрозумілому інтерфейсі. Ви завжди бачите, що відбувається в бізнесі.</p>
-      <div style="margin-top:26px"><a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a></div>
+      <div style="margin-top:26px"><a class="btn" href="#demo">Показати систему <span class="ar">→</span></a></div>
     </div>
     <div>
       <div class="callouts">
@@ -411,9 +419,9 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 <section id="proces" style="background:var(--bg-2)">
   <div class="wrap split" style="align-items:start">
     <div>
-      <span class="eyebrow">Як це відбувається</span>
+      <span class="eyebrow">Від розмови до запуску</span>
       <h2 style="margin-top:14px">Запускаємо систему за 30 днів</h2>
-      <p class="lede">Результат через 30 днів — не макет і не демо.
+      <p class="lede">Результат через 30 днів — не макет і не презентація.
         Ви вже працюєте у своїй системі. Розробка і два перші місяці
         входять в один стартовий платіж — скільки це коштує, нижче.</p>
     </div>
@@ -605,10 +613,10 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 <section class="final" id="demo">
   <div class="wrap fgrid">
     <div>
-      <span class="eyebrow">Отримати демо</span>
+      <span class="eyebrow">Показ системи</span>
       <h2 style="margin-top:14px">Покажемо, як CRM може виглядати у вашому бізнесі</h2>
       <p class="lede">Залиште ім'я та зручний контакт. Повернемось протягом доби
-        і покажемо живу систему, а не презентацію. Розмова і демо безкоштовні —
+        і покажемо живу систему, а не презентацію. Показ і розмова безкоштовні —
         стартовий платіж тільки після того, як домовимось, що саме збираємо.</p>
     </div>
     <div class="formcard">
@@ -622,8 +630,13 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
         <div class="fld"><label for="f-tg">Telegram</label>
           <input type="text" id="f-tg" name="telegram" placeholder="@nickname"></div>
         <p class="ferr" id="ferr" hidden>Вкажіть телефон або Telegram — інакше нам нічим відповісти.</p>
-        <button class="btn" type="submit">Отримати демо <span class="ar">→</span></button>
-        <p class="sm">Відповідаємо протягом доби. За розмову і демо платити не потрібно.</p>
+        <label class="consent" for="f-agree">
+          <input type="checkbox" id="f-agree" name="agree">
+          <span>Даю згоду на обробку моїх контактних даних для відповіді на заявку —
+            <a href="privacy.html" target="_blank" rel="noopener">політика конфіденційності</a>.</span>
+        </label>
+        <button class="btn" type="submit">Записатися на показ <span class="ar">→</span></button>
+        <p class="sm">Відповідаємо протягом доби. За показ і розмову платити не потрібно.</p>
       </form>
       <div class="ok" id="ok" hidden></div>
     </div>
@@ -631,8 +644,18 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 </section>
 
 <footer><div class="wrap">
-  <p>LAD · Системи управління бізнесом</p>
-  <p>Україна · дані на сервері замовника</p>
+  <div>
+    <p>LAD · Системи управління бізнесом</p>
+    <p><span class="todo">вкажіть ФОП/ТОВ і код</span></p>
+  </div>
+  <div>
+    <p>Пошта: <span class="todo">вкажіть e-mail</span></p>
+    <p>Telegram: <span class="todo">вкажіть @нікнейм</span></p>
+  </div>
+  <div>
+    <p>Україна · дані на сервері замовника</p>
+    <p><a href="privacy.html">Політика конфіденційності</a></p>
+  </div>
 </div></footer>
 
 <script>
@@ -672,16 +695,51 @@ function pick(i){
 }
 pick(0);
 
+// нормалізація українського номера -> 380XXXXXXXXX або null
+function normUA(raw){
+  var d=(raw||'').replace(/\D/g,'');
+  if(d.length===12 && d.indexOf('380')===0) d=d;
+  else if(d.length===11 && d.indexOf('38')===0) return null;   // 38 + 9 цифр — неповний
+  else if(d.length===10 && d.charAt(0)==='0') d='38'+d;
+  else if(d.length===9) d='380'+d;
+  else return null;
+  if(d.length!==12 || d.indexOf('380')!==0) return null;
+  if(!/[3-9]/.test(d.charAt(3))) return null;                  // код оператора/міста
+  return d;
+}
+function fmtUA(d){
+  return '+'+d.slice(0,3)+' '+d.slice(3,5)+' '+d.slice(5,8)+' '+d.slice(8,10)+' '+d.slice(10,12);
+}
+function normTG(raw){
+  var v=(raw||'').trim();
+  if(!v) return '';
+  v=v.replace(/^https?:\/\/(t\.me|telegram\.me)\//i,'').replace(/^@+/,'');
+  return v?'@'+v:'';
+}
+
+var phEl=document.getElementById('f-phone'), tgEl=document.getElementById('f-tg');
+phEl.addEventListener('blur',function(){ var d=normUA(this.value); if(d) this.value=fmtUA(d); });
+tgEl.addEventListener('blur',function(){ var v=normTG(this.value); if(v) this.value=v; });
+
 document.getElementById('lead').addEventListener('submit',function(e){
   e.preventDefault();
-  var nm=document.getElementById('f-name').value;
-  var ph=document.getElementById('f-phone'), tg=document.getElementById('f-tg');
+  var nm=document.getElementById('f-name').value.trim();
+  var ag=document.getElementById('f-agree');
   var err=document.getElementById('ferr');
-  var empty=!ph.value.trim() && !tg.value.trim();
-  err.hidden=!empty;
-  ph.setAttribute('aria-invalid', empty?'true':'false');
-  tg.setAttribute('aria-invalid', empty?'true':'false');
-  if(empty){ ph.focus(); return; }
+  var phRaw=phEl.value.trim(), tgRaw=tgEl.value.trim();
+  var phOK=phRaw?normUA(phRaw):null;
+  var msg='';
+
+  if(!phRaw && !tgRaw) msg='Вкажіть телефон або Telegram — інакше нам нічим відповісти.';
+  else if(phRaw && !phOK) msg='Перевірте номер телефону. Формат: +380 XX XXX XX XX';
+  else if(!ag.checked) msg='Щоб ми могли відповісти, потрібна згода на обробку контактних даних.';
+
+  phEl.setAttribute('aria-invalid', (msg && (!phRaw&&!tgRaw || phRaw&&!phOK))?'true':'false');
+  tgEl.setAttribute('aria-invalid', (msg && !phRaw&&!tgRaw)?'true':'false');
+  if(msg){ err.textContent=msg; err.hidden=false; (phRaw&&!phOK?phEl:(!phRaw&&!tgRaw?phEl:ag)).focus(); return; }
+
+  err.hidden=true;
+  var lead={name:nm, phone:phOK?'+'+phOK:'', telegram:normTG(tgRaw), page:location.href, ts:new Date().toISOString()};
   var ok=document.getElementById('ok');
   ok.innerHTML='<b>Заявку прийнято</b>'+nm+', ми повернемось протягом доби. '+
     '(Макет: форму ще не підключено до пошти й Telegram.)';
