@@ -81,18 +81,24 @@ nav a:hover{color:#fff}
 
 /* герой */
 .hero{position:relative;overflow:hidden;background:var(--dark);border-top:0;padding:0;
-  height:clamp(580px,74vh,720px);display:flex;align-items:center}
+  height:clamp(660px,88vh,880px);display:flex;align-items:center}
 .hero-media{position:absolute;inset:0;overflow:hidden}
-.hero-frame{position:absolute;top:0;right:0;height:100%;aspect-ratio:1672/941}
+.hero-frame{position:absolute;top:-11%;right:-4%;height:122%;aspect-ratio:1672/941}
 .hero-frame .photo{width:100%;height:100%;object-fit:cover;object-position:center}
 .laptop-screen{position:absolute;left:52.69%;top:25.61%;width:38.22%;height:42.19%;
   object-fit:cover;object-position:top left;background:#fff}
 .hero-scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(96deg, rgba(16,21,17,.97) 0%, rgba(16,21,17,.92) 26%,
-    rgba(16,21,17,.6) 44%, rgba(16,21,17,.12) 60%, rgba(16,21,17,0) 70%)}
+  background:linear-gradient(96deg, rgba(16,21,17,.97) 0%, rgba(16,21,17,.93) 24%,
+    rgba(16,21,17,.62) 41%, rgba(16,21,17,.14) 56%, rgba(16,21,17,0) 67%)}
 .hero-inner{position:relative;z-index:2;width:100%}
-.hero h1{color:#fff;max-width:13ch;margin-top:16px}
-.hero .lede{max-width:44ch;color:#fff;opacity:.94}
+.hero h1{color:#fff;max-width:14ch;margin-top:16px}
+.hero .lede{max-width:43ch;color:#fff;opacity:.94}
+.hero-price{display:inline-flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-top:26px;
+  padding:11px 17px;border:1px solid rgba(255,255,255,.22);border-radius:99px;
+  background:rgba(255,255,255,.06)}
+.hero-price b{font-family:var(--f-d);font-weight:800;font-size:21px;letter-spacing:-.03em;color:#fff}
+.hero-price span{font-size:14px;color:rgba(255,255,255,.82)}
+@media(max-width:520px){.hero-price{width:100%;border-radius:14px;justify-content:center;text-align:center}}
 .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center}
 .float{position:absolute;left:72%;top:69%;background:#fff;border-radius:13px;
   padding:12px 15px;display:flex;align-items:center;gap:11px;z-index:3;
@@ -103,7 +109,7 @@ nav a:hover{color:#fff}
 .float span{font-size:12.5px;color:var(--ink-3)}
 @media(max-width:900px){
   .hero{height:auto;padding:52px 0 48px}
-  .hero-frame{position:absolute;inset:0;height:100%;width:100%;aspect-ratio:auto}
+  .hero-frame{position:absolute;inset:0;top:0;right:0;height:100%;width:100%;aspect-ratio:auto}
   .hero-frame .photo{object-position:72% center}
   .laptop-screen,.float{display:none}
   .hero-scrim{background:linear-gradient(180deg, rgba(16,21,17,.9), rgba(16,21,17,.94))}
@@ -269,6 +275,8 @@ details[open] summary::after{content:"–"}
 .formcard .fld{margin-bottom:16px}
 .formcard .btn{width:100%;justify-content:center;font-size:15.5px;padding:14px}
 .formcard .sm{font-size:12.5px;color:var(--ink-3);margin-top:12px;text-align:center}
+.formcard .ferr{font-size:13px;color:#C0392B;margin:-6px 0 14px;line-height:1.4}
+.formcard input[aria-invalid="true"]{border-color:#C0392B}
 .ok{background:var(--green-soft);border:1px solid #CFE3D6;border-radius:var(--r-sm);
   padding:16px 18px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
 .ok b{color:var(--green-d);font-family:var(--f-d);display:block;margin-bottom:4px}
@@ -308,12 +316,13 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
     <div class="hero-scrim"></div>
   </div>
   <div class="wrap hero-inner">
-    <span class="eyebrow">CRM система для бізнесу</span>
-    <h1>CRM, яку налаштуємо <u>під ваш бізнес</u></h1>
+    <span class="eyebrow">Індивідуальна CRM-система для бізнесу</span>
+    <h1>Розробимо CRM <u>з нуля</u> під ваш бізнес</h1>
     <p class="lede">
-      Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти.
-      Ви показуєте, як працюєте зараз — ми налаштовуємо систему під цей процес.
+      Не шаблон і не конструктор. Дивимось, як ви працюєте зараз, і пишемо систему
+      під ваш процес: клієнти, заявки, задачі, замовлення, команда та звіти в одному місці.
     </p>
+    <div class="hero-price"><b>$100</b><span>перший внесок — і за 30 днів система працює у вас</span></div>
     <div class="btnrow">
       <a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a>
       <a class="btn line" href="#vyglyad">Обговорити свій процес</a>
@@ -548,15 +557,20 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
     <div>
       <span class="eyebrow">Отримати демо</span>
       <h2 style="margin-top:14px">Покажемо, як CRM може виглядати у вашому бізнесі</h2>
-      <p class="lede">Залиште ім'я та Telegram. Повернемось протягом доби
+      <p class="lede">Залиште ім'я та зручний контакт. Повернемось протягом доби
         і покажемо живу систему, а не презентацію.</p>
     </div>
     <div class="formcard">
       <form id="lead">
         <div class="fld"><label for="f-name">Ім'я</label>
-          <input type="text" id="f-name" placeholder="Як до вас звертатись" required></div>
-        <div class="fld"><label for="f-contact">Telegram / телефон</label>
-          <input type="text" id="f-contact" placeholder="@nickname або +380" required></div>
+          <input type="text" id="f-name" name="name" autocomplete="name"
+                 placeholder="Як до вас звертатись" required></div>
+        <div class="fld"><label for="f-phone">Телефон</label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel"
+                 inputmode="tel" placeholder="+380 __ ___ __ __"></div>
+        <div class="fld"><label for="f-tg">Telegram</label>
+          <input type="text" id="f-tg" name="telegram" placeholder="@nickname"></div>
+        <p class="ferr" id="ferr" hidden>Вкажіть телефон або Telegram — інакше нам нічим відповісти.</p>
         <button class="btn" type="submit">Отримати демо <span class="ar">→</span></button>
         <p class="sm">Відповідаємо протягом доби. За розмову і демо платити не потрібно.</p>
       </form>
@@ -610,6 +624,13 @@ pick(0);
 document.getElementById('lead').addEventListener('submit',function(e){
   e.preventDefault();
   var nm=document.getElementById('f-name').value;
+  var ph=document.getElementById('f-phone'), tg=document.getElementById('f-tg');
+  var err=document.getElementById('ferr');
+  var empty=!ph.value.trim() && !tg.value.trim();
+  err.hidden=!empty;
+  ph.setAttribute('aria-invalid', empty?'true':'false');
+  tg.setAttribute('aria-invalid', empty?'true':'false');
+  if(empty){ ph.focus(); return; }
   var ok=document.getElementById('ok');
   ok.innerHTML='<b>Заявку прийнято</b>'+nm+', ми повернемось протягом доби. '+
     '(Макет: форму ще не підключено до пошти й Telegram.)';
