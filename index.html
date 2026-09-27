@@ -3,591 +3,617 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лад — CRM, яку налаштуємо під ваш бізнес</title>
 <meta name="description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Запуск за 30 днів, від $100. Дані на вашому сервері.">
-<meta name="theme-color" content="#B84B21">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B84B21'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3E%D0%9B%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#101511">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F7D4F'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3E%D0%9B%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Лад — CRM, яку налаштуємо під ваш бізнес">
-<meta property="og:description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Запуск за 30 днів, від $100. Дані на вашому сервері.">
+<meta property="og:description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Запуск за 30 днів, від $100.">
 <meta property="og:locale" content="uk_UA">
-<meta name="twitter:card" content="summary_large_image">
-<title>Лад — CRM, яку налаштуємо під ваш бізнес</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Onest:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@600;700;800&display=swap">
 
 <style>
 :root{
-  --bg:#F2F1ED; --surface:#FBFAF8; --sunk:#E8E6E0; --line:#D6D3CA;
-  --ink:#1A1C1F; --ink-2:#565A60; --ink-3:#85898F;
-  --rust:#B84B21; --rust-soft:#F6E5DC; --slate:#33566E; --slate-soft:#E0E8ED;
-  --f-disp:"Onest","Helvetica Neue",Arial,sans-serif;
-  --f-body:"Manrope","Helvetica Neue",Arial,sans-serif;
-  --f-mono:"IBM Plex Mono",Menlo,Consolas,monospace;
-  --maxw:1080px;--pad:54px;
+  color-scheme:light;
+  --dark:#101511; --dark-2:#19211B; --dark-3:#212B24; --dark-line:#2A362D;
+  --bg:#F3F1EC; --bg-2:#EDEAE3; --card:#FFFFFF; --line:#E3DFD5;
+  --ink:#14181A; --ink-2:#5C6360; --ink-3:#8C918D; --on-dark:#EEF2EE; --on-dark-2:#A3AEA6;
+  --green:#2F7D4F; --green-d:#24633E; --green-b:#46A96E; --green-soft:#E7F1EA;
+  --r:18px; --r-sm:11px;
+  --f-d:"Onest","Helvetica Neue",Arial,sans-serif;
+  --f-b:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --maxw:1180px; --pad:40px;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#131416;--surface:#191B1E;--sunk:#0F1012;--line:#2C2F34;
-  --ink:#EDEBE7;--ink-2:#A5A9AF;--ink-3:#787C82;
-  --rust:#E8794C;--rust-soft:#2B1912;--slate:#7FAAC6;--slate-soft:#15222B;}}
-:root[data-theme="dark"]{
-  --bg:#131416;--surface:#191B1E;--sunk:#0F1012;--line:#2C2F34;
-  --ink:#EDEBE7;--ink-2:#A5A9AF;--ink-3:#787C82;
-  --rust:#E8794C;--rust-soft:#2B1912;--slate:#7FAAC6;--slate-soft:#15222B;}
-
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);
-  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:74px}
-::selection{background:var(--rust);color:#fff}
-:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
-h1,h2,h3{font-family:var(--f-disp);margin:0;line-height:1.14;text-wrap:balance;letter-spacing:-.025em}
-h1{font-size:clamp(33px,4.8vw,54px);font-weight:800}
-h2{font-size:clamp(24px,3.1vw,35px);font-weight:800}
-h3{font-size:18.5px;font-weight:700;letter-spacing:-.015em;line-height:1.3}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-b);
+  font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+::selection{background:var(--green);color:#fff}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--f-d);margin:0;line-height:1.14;letter-spacing:-.028em;text-wrap:balance}
+h1{font-size:clamp(35px,4.6vw,56px);font-weight:800;line-height:1.06}
+h2{font-size:clamp(26px,3.1vw,38px);font-weight:800}
+h3{font-size:19px;font-weight:700;letter-spacing:-.02em}
 p{margin:0}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-.lede{font-size:clamp(16.5px,1.8vw,19px);color:var(--ink-2);max-width:62ch;margin-top:16px}
-.eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
-section{padding:54px 0;border-top:1px solid var(--line)}
-@media (max-width:820px){:root{--pad:20px}body{font-size:16px}section{padding:40px 0}}
-
-header{background:var(--surface);position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding-top:13px;padding-bottom:13px}
-.logo{display:flex;align-items:baseline;gap:11px}
-.logo b{font-family:var(--f-disp);font-weight:800;font-size:23px;letter-spacing:-.04em}
-.logo i{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;
+/* колонки сітки не мають розтягуватись під натуральну ширину знімків */
+.hero-grid>*,.split>*,.fgrid>*,.gwrap>*,.feat>*{min-width:0}
+@media(max-width:820px){:root{--pad:20px}}
+.eyebrow{font-family:var(--f-b);font-weight:600;font-size:11px;letter-spacing:.17em;
   text-transform:uppercase;color:var(--ink-3)}
-@media (max-width:560px){.logo i{display:none}}
+.dark .eyebrow{color:var(--green-b)}
+.lede{font-size:clamp(16px,1.6vw,17.5px);color:var(--ink-2);max-width:56ch;margin-top:16px;line-height:1.62}
+.dark .lede{color:var(--on-dark-2)}
+section{padding:74px 0}
+@media(max-width:820px){section{padding:52px 0}}
+.dark{background:var(--dark);color:var(--on-dark)}
 
-.btn{font-family:var(--f-disp);font-weight:700;font-size:15.5px;letter-spacing:-.01em;
-  padding:13px 24px;border:1.5px solid var(--rust);background:var(--rust);color:#fff;
-  text-decoration:none;cursor:pointer;display:inline-block;border-radius:2px;
-  transition:filter .14s ease,transform .14s ease}
-.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.btn.sm{font-size:14px;padding:10px 18px}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{border-color:var(--ink);filter:none}
-.hint{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;line-height:1.7}
+/* кнопки */
+.btn{font-family:var(--f-d);font-weight:700;font-size:15px;letter-spacing:-.01em;
+  padding:13px 22px;border-radius:var(--r-sm);border:1.5px solid var(--green);
+  background:var(--green);color:#fff;text-decoration:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:background .15s,transform .15s}
+.btn:hover{background:var(--green-d);border-color:var(--green-d);transform:translateY(-1px)}
+.btn .ar{font-size:15px;line-height:1}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.line:hover{background:transparent;border-color:var(--ink);transform:translateY(-1px)}
+.dark .btn.line,.hero .btn.line,.final .btn.line{color:var(--on-dark);border-color:var(--dark-line)}
+.dark .btn.line:hover,.hero .btn.line:hover,.final .btn.line:hover{border-color:var(--on-dark-2);color:#fff}
+.btn.white{background:#fff;color:var(--ink);border-color:#fff}
+.btn.white:hover{background:#fff;color:var(--green-d);border-color:#fff}
 
-.cta{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.cta span{font-size:15.5px;color:var(--ink-2)}
+/* шапка */
+header{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-top:18px;padding-bottom:18px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo b{font-family:var(--f-d);font-weight:800;font-size:24px;letter-spacing:-.045em;color:#fff}
+.logo i{font-style:normal;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--on-dark-2);font-weight:600}
+nav{display:flex;gap:26px}
+nav a{font-size:14.5px;font-weight:500;color:var(--on-dark-2);text-decoration:none}
+nav a:hover{color:#fff}
+@media(max-width:940px){nav{display:none}}
+@media(max-width:520px){.logo i{display:none}}
 
 /* герой */
-.hero{background:var(--surface);border-top:0;padding:54px 0 46px}
-.hero h1{max-width:17ch}
-.hero h1 u{text-decoration:none;box-shadow:inset 0 -.13em 0 var(--rust-soft), inset 0 -.19em 0 var(--rust)}
-.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;align-items:center}
-.specs{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border-top:1px solid var(--line)}
-.specs div{padding:16px 18px 18px;border-right:1px solid var(--line)}
-.specs div:last-child{border-right:0}
-.specs dt{font-family:var(--f-disp);font-weight:800;font-size:19px;letter-spacing:-.03em;margin-bottom:6px}
-.specs dd{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.4}
-@media (max-width:860px){.specs{grid-template-columns:repeat(2,1fr)}
-  .specs div{border-bottom:1px solid var(--line)}}
+.hero{background:
+  radial-gradient(900px 480px at 78% 18%, rgba(70,169,110,.18), transparent 62%),
+  radial-gradient(700px 400px at 8% 88%, rgba(70,169,110,.09), transparent 60%),
+  var(--dark);
+  padding:72px 0 64px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1.15fr;gap:48px;align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero h1{color:#fff;max-width:13ch;margin-top:16px}
+.hero .lede{max-width:46ch}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.specs{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:38px;padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.1)}
+.spec{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--on-dark-2);font-weight:500}
+.spec svg{flex:none;color:var(--green-b)}
 
-/* знімки */
-.shotwrap{position:relative;margin-top:24px;border:1px solid var(--line);background:var(--surface);overflow:hidden}
-.shotwrap img{display:block;width:100%;height:auto}
-.dot{position:absolute;width:25px;height:25px;border-radius:50%;background:var(--rust);color:#fff;
-  font-family:var(--f-disp);font-weight:800;font-size:12.5px;display:flex;align-items:center;
-  justify-content:center;transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(255,255,255,.9)}
-@media (max-width:700px){.dot{display:none}}
-.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--line)}
-.legend div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 15px;
-  background:var(--sunk)}
-.legend b{font-family:var(--f-disp);font-weight:800;color:var(--rust);font-size:12.5px;
-  display:inline-block;margin-right:6px}
-.legend span{font-size:14px;color:var(--ink-2)}
-@media (max-width:760px){.legend{grid-template-columns:1fr 1fr}}
-@media (max-width:480px){.legend{grid-template-columns:1fr}}
-.shotcap{font-family:var(--f-disp);font-weight:800;font-size:clamp(19px,2.3vw,24px);
-  letter-spacing:-.025em;margin-top:34px;line-height:1.25}
-.shotcap + p{font-size:15.5px;color:var(--ink-2);margin-top:8px;max-width:62ch}
+/* пристрій зі знімком */
+.device{border-radius:14px;overflow:hidden;background:#fff;
+  box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08)}
+.device-bar{display:flex;gap:6px;align-items:center;padding:10px 13px;background:#EDEFEC;
+  border-bottom:1px solid #DFE3DF}
+.device-bar i{width:9px;height:9px;border-radius:50%;background:#CBD1CB;display:block}
+.device-wrap{position:relative}
+.float{position:absolute;right:-14px;bottom:34px;background:#fff;border-radius:13px;
+  padding:12px 15px;display:flex;align-items:center;gap:11px;
+  box-shadow:0 16px 38px rgba(0,0,0,.3);min-width:186px}
+.float .ico{width:34px;height:34px;border-radius:9px;background:var(--green-soft);
+  display:flex;align-items:center;justify-content:center;color:var(--green);flex:none}
+.float b{display:block;font-family:var(--f-d);font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.2}
+.float span{font-size:12.5px;color:var(--ink-3)}
+@media(max-width:560px){.float{right:8px;bottom:12px;transform:scale(.88);transform-origin:right bottom}}
 
-/* питання */
-.qs{margin-top:26px;border-top:1px solid var(--line)}
-.qs > div{border-bottom:1px solid var(--line);padding:16px 0;font-family:var(--f-disp);
-  font-weight:700;font-size:clamp(17px,2vw,21px);letter-spacing:-.02em;display:flex;gap:16px}
-.qs .n{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);font-weight:400;padding-top:6px}
-.note{margin-top:20px;font-size:16px;color:var(--ink-2);max-width:64ch;line-height:1.55}
+/* блок «показуємо» */
+.split{display:grid;grid-template-columns:.85fr 1.25fr;gap:52px;align-items:center}
+@media(max-width:980px){.split{grid-template-columns:1fr;gap:34px}}
+.callouts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.callout{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:8px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);position:relative}
+.callout::after{content:"";position:absolute;left:50%;bottom:-14px;width:1px;height:14px;
+  background:var(--line)}
+.frame{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff;
+  box-shadow:0 18px 44px rgba(20,24,26,.09)}
 
 /* картки */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:26px;
-  border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.grid3 > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:20px;background:var(--surface)}
-.grid3 h3{margin-bottom:7px}
-.grid3 p{font-size:15px;color:var(--ink-2);line-height:1.5}
-@media (max-width:860px){.grid3{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1000px){.cards4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cards4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px}
+.card .ic{width:38px;height:38px;border-radius:10px;background:var(--green-soft);color:var(--green);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.card h3{font-size:16.5px;margin-bottom:7px;line-height:1.3}
+.card p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.dark .card{background:var(--dark-2);border-color:var(--dark-line)}
+.dark .card h3{color:var(--on-dark)}
+.dark .card p{color:var(--on-dark-2)}
+.dark .card .ic{background:rgba(70,169,110,.14);color:var(--green-b)}
 
-/* калькулятор */
-.calc{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;margin-top:24px;align-items:start}
-@media (max-width:860px){.calc{grid-template-columns:1fr;gap:22px}}
-.fields{display:flex;flex-direction:column;gap:18px}
-.f label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
-.f .r{display:flex;align-items:center;gap:14px}
-.f input[type=range]{flex:1;accent-color:var(--slate);height:22px}
-.f .v{font-family:var(--f-disp);font-weight:800;font-size:21px;min-width:68px;text-align:right;
-  font-variant-numeric:tabular-nums;letter-spacing:-.03em}
-.readout{background:var(--surface);border:1px solid var(--line);padding:24px 22px}
-.readout .big{font-family:var(--f-disp);font-weight:800;font-size:clamp(32px,5.2vw,46px);line-height:1;
-  color:var(--slate);font-variant-numeric:tabular-nums;letter-spacing:-.035em;margin-top:8px}
-.readout .cmp{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;gap:14px;align-items:baseline}
-.readout .cmp span:first-child{font-size:15px;color:var(--ink-2)}
-.readout .cmp span:last-child{font-family:var(--f-disp);font-weight:700;font-size:17px;
-  font-variant-numeric:tabular-nums}
+/* вкладки можливостей */
+.tabs{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.tab{font-family:var(--f-d);font-weight:700;font-size:14.5px;padding:10px 20px;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s}
+.tab:hover{border-color:var(--ink-3)}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:grid;grid-template-columns:.82fr 1.18fr}
+@media(max-width:900px){.feat{grid-template-columns:1fr}}
+.feat-l{padding:26px 24px;border-right:1px solid var(--line)}
+@media(max-width:900px){.feat-l{border-right:0;border-bottom:1px solid var(--line)}}
+.feat-l h3{font-size:20px;margin-bottom:16px;line-height:1.25}
+.feat-l ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.feat-l li{display:flex;gap:11px;font-size:15px;color:var(--ink-2);line-height:1.45}
+.feat-l li svg{flex:none;color:var(--green);margin-top:3px}
+.feat-r{padding:0;background:var(--bg-2);display:flex;align-items:center}
+.feat-r img{border-radius:0}
 
 /* кроки */
-.steps{margin-top:26px;border-top:1.5px solid var(--ink)}
-.step{display:grid;grid-template-columns:54px 1fr 1.25fr;gap:22px;padding:20px 0;
-  border-bottom:1px solid var(--line);align-items:start}
-.step .n{font-family:var(--f-disp);font-weight:800;font-size:22px;color:var(--rust);
-  letter-spacing:-.03em;line-height:1.1}
-.step p{font-size:15.5px;color:var(--ink-2);line-height:1.5}
-@media (max-width:760px){.step{grid-template-columns:44px 1fr;gap:14px}.step p{grid-column:2}}
-.result{margin-top:22px;padding:16px 20px;background:var(--sunk);border-left:3px solid var(--rust);
-  font-family:var(--f-disp);font-weight:700;font-size:17px;letter-spacing:-.02em;line-height:1.35}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr);gap:26px 20px}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.stp{position:relative;padding-right:26px}
+.stp:last-child{padding-right:0}
+.stp .n{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);
+  display:flex;align-items:center;justify-content:center;font-family:var(--f-d);font-weight:800;
+  font-size:14px;color:var(--ink);margin-bottom:16px}
+.stp h3{font-size:17px;margin-bottom:8px;line-height:1.3}
+.stp p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.stp::after{content:"→";position:absolute;top:10px;right:4px;color:var(--ink-3);font-size:15px}
+.stp:last-child::after{display:none}
+@media(max-width:900px){.stp::after{display:none}.stp{padding-right:0}}
 
-/* ціна */
-.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;
-  border-top:2px solid var(--ink);border-left:1px solid var(--line)}
-.flow > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:20px 18px;background:var(--surface)}
-.flow .mo{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);margin-bottom:9px}
-.flow .amt{font-family:var(--f-disp);font-weight:800;font-size:30px;letter-spacing:-.035em;
-  line-height:1;margin-bottom:8px}
-.flow .amt.sub{color:var(--rust)}
-.flow p{font-size:14.5px;color:var(--ink-2);line-height:1.45}
-@media (max-width:860px){.flow{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.flow{grid-template-columns:1fr}}
-.tariffs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:20px;
-  border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.tariffs > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:18px 20px;background:var(--surface)}
-.tariffs .p{font-family:var(--f-disp);font-weight:800;font-size:27px;letter-spacing:-.035em;line-height:1}
-.tariffs .u{font-size:15px;color:var(--ink-2);margin-top:7px}
-@media (max-width:700px){.tariffs{grid-template-columns:1fr}}
-.included{margin-top:20px;font-size:15.5px;color:var(--ink-2);line-height:1.6;max-width:70ch}
-.included b{color:var(--ink);font-family:var(--f-disp);font-weight:700}
+/* безпека — схема */
+.diagram{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.dnode{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r);
+  padding:20px 22px;text-align:center;min-width:150px}
+.dnode .dic{width:46px;height:46px;border-radius:12px;background:rgba(70,169,110,.14);
+  color:var(--green-b);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.dnode b{display:block;font-family:var(--f-d);font-weight:700;font-size:15px;color:var(--on-dark)}
+.dnode.core{background:var(--green);border-color:var(--green);min-width:168px}
+.dnode.core b{color:#fff;font-size:22px;letter-spacing:-.03em}
+.dnode.core span{font-size:12.5px;color:rgba(255,255,255,.82)}
+.darrow{color:var(--green-b);font-size:19px}
+@media(max-width:700px){.darrow{transform:rotate(90deg)}}
 
-/* підходить / ні */
-.fit{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:26px;
-  border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.fit > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 20px;
-  background:var(--surface)}
-.fit h3{margin-bottom:12px}
-.fit ul{margin:0;padding-left:18px;font-size:15px;color:var(--ink-2);line-height:1.55}
-.fit li{margin-bottom:7px}
-@media (max-width:700px){.fit{grid-template-columns:1fr}}
+/* ціни */
+.flow{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.fnode{display:flex;gap:12px;align-items:flex-start;flex:1;min-width:190px}
+.fnode .fi{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);flex:none;
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-3);background:var(--card)}
+.fnode.on .fi{background:var(--green);border-color:var(--green);color:#fff}
+.fnode b{display:block;font-family:var(--f-d);font-weight:700;font-size:16px;letter-spacing:-.02em}
+.fnode span{font-size:14px;color:var(--ink-2)}
+.price-grid{display:grid;grid-template-columns:1.15fr repeat(3,1fr) .78fr;gap:16px;margin-top:34px}
+@media(max-width:1060px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.price-grid{grid-template-columns:1fr}}
+.pstart{background:var(--green-soft);border:1px solid #CFE3D6;border-radius:var(--r);padding:24px 22px;
+  display:flex;flex-direction:column;justify-content:center}
+.pstart .lbl{font-size:14.5px;color:var(--green-d);font-weight:600;margin-bottom:4px}
+.pstart .amt{font-family:var(--f-d);font-weight:800;font-size:46px;letter-spacing:-.04em;
+  line-height:1;color:var(--ink);margin-bottom:12px}
+.pstart p{font-size:14px;color:var(--ink-2);line-height:1.45}
+.ptier{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px}
+.ptier .amt{font-family:var(--f-d);font-weight:800;font-size:23px;letter-spacing:-.03em;line-height:1.1}
+.ptier .u{font-size:14px;color:var(--ink-2);margin:6px 0 14px}
+.ptier ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ptier li{display:flex;gap:9px;font-size:14px;color:var(--ink-2)}
+.ptier li svg{flex:none;color:var(--green);margin-top:3px}
+.pnote{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:20px;
+  display:flex;flex-direction:column;justify-content:center;gap:10px}
+.pnote svg{color:var(--ink-3)}
+.pnote p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
 
-.guarantee{margin-top:26px;border:1.5px solid var(--rust);padding:20px 22px;background:var(--rust-soft)}
-.guarantee h3{font-size:19.5px;font-weight:800;margin-bottom:7px}
-.guarantee p{font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:68ch}
+/* кому підійде */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.fit{grid-template-columns:1fr}}
+.fitcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px}
+.fitcard .hd{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.fitcard .hd .m{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;flex:none}
+.fitcard.yes .hd .m{background:var(--green);color:#fff}
+.fitcard.no .hd .m{background:#E4E6E3;color:#6E756F}
+.fitcard .hd b{font-family:var(--f-d);font-weight:700;font-size:16.5px}
+.fitcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.fitcard li{display:flex;gap:10px;font-size:14.5px;color:var(--ink-2);line-height:1.45}
+.fitcard li svg{flex:none;margin-top:3px}
+.fitcard.yes li svg{color:var(--green)}
+.fitcard.no li svg{color:#9AA09B}
 
-/* faq */
-.faq{margin-top:22px;border-top:1px solid var(--line)}
-details{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;padding:16px 0;font-family:var(--f-disp);font-weight:700;font-size:17px;
+/* гарантія + faq */
+.gwrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:center}
+@media(max-width:940px){.gwrap{grid-template-columns:1fr;gap:34px}}
+.guarantee{background:
+  radial-gradient(420px 260px at 20% 30%, rgba(70,169,110,.22), transparent 65%), var(--dark);
+  border-radius:var(--r);padding:34px 32px;color:var(--on-dark);position:relative;overflow:hidden}
+.guarantee .shield{color:var(--green-b);margin-bottom:18px}
+.guarantee .big{font-family:var(--f-d);font-weight:800;font-size:clamp(38px,5vw,54px);
+  letter-spacing:-.04em;line-height:1;color:#fff}
+.guarantee h3{font-size:clamp(19px,2.2vw,23px);color:#fff;margin:12px 0 12px;line-height:1.25}
+.guarantee p{font-size:15px;color:var(--on-dark-2);line-height:1.55;max-width:44ch}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;padding:18px 0;font-family:var(--f-d);font-weight:700;font-size:16.5px;
   letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--f-mono);color:var(--rust);font-size:17px;flex:none}
+summary::after{content:"+";color:var(--green);font-size:19px;font-weight:600;flex:none;line-height:1}
 details[open] summary::after{content:"–"}
-.ans{padding:0 0 18px;max-width:70ch;color:var(--ink-2);font-size:15.5px;line-height:1.55}
+.ans{padding:0 0 20px;color:var(--ink-2);font-size:15px;line-height:1.6;max-width:66ch}
 
-/* форма */
-.formsec{background:var(--surface)}
-form{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px;max-width:640px}
-.full{grid-column:1/-1}
-@media (max-width:640px){form{grid-template-columns:1fr}}
-form label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
-input[type=text],select{width:100%;padding:12px 13px;background:var(--bg);color:var(--ink);
-  border:1px solid var(--line);font-family:var(--f-body);font-size:16px;border-radius:2px}
-input:focus,select:focus{border-color:var(--rust)}
-.got{border:1px solid var(--slate);background:var(--slate-soft);padding:20px 22px;margin-top:20px;max-width:640px}
-.got h3{color:var(--slate);margin-bottom:7px;font-size:19px;font-weight:800}
-.got p{font-size:15.5px;color:var(--ink-2)}
-.optional{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);max-width:640px}
-.optional .eyebrow{display:block;margin-bottom:4px}
-.optional p.sub{font-size:15px;color:var(--ink-2);margin-top:6px}
-.done{border:1.5px solid var(--rust);background:var(--rust-soft);padding:20px 22px;margin-top:20px;max-width:640px}
-.done h3{margin-bottom:7px;font-size:19px;font-weight:800}
-.done p{font-size:15.5px;color:var(--ink-2)}
+/* фінальний блок */
+.final{background:
+  radial-gradient(760px 420px at 80% 30%, rgba(70,169,110,.16), transparent 62%), var(--dark);
+  padding:72px 0}
+.fgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+@media(max-width:940px){.fgrid{grid-template-columns:1fr;gap:34px}}
+.final h2{color:#fff}
+.formcard{background:var(--card);border-radius:var(--r);padding:28px 26px}
+.formcard label{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:8px}
+.formcard input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:var(--r-sm);
+  font-family:var(--f-b);font-size:15.5px;background:var(--bg);color:var(--ink)}
+.formcard input:focus{border-color:var(--green);outline:none}
+.formcard .fld{margin-bottom:16px}
+.formcard .btn{width:100%;justify-content:center;font-size:15.5px;padding:14px}
+.formcard .sm{font-size:12.5px;color:var(--ink-3);margin-top:12px;text-align:center}
+.ok{background:var(--green-soft);border:1px solid #CFE3D6;border-radius:var(--r-sm);
+  padding:16px 18px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.ok b{color:var(--green-d);font-family:var(--f-d);display:block;margin-bottom:4px}
 
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--ink);color:var(--bg);
-  border-top:1px solid var(--ink)}
-.dock .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
-.dock p{font-family:var(--f-body);font-weight:600;font-size:14.5px}
-@media (max-width:680px){.dock p{display:none}.dock .wrap{justify-content:center}}
-footer{background:var(--sunk);padding:26px 0 36px;border-top:1px solid var(--line)}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:26px 0 34px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer p{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+footer p{font-size:12.5px;color:var(--on-dark-2)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+
 <header>
   <div class="wrap">
-    <div class="logo"><b>Лад</b><i>CRM під ваш процес</i></div>
-    <a class="btn sm" href="#demo">Отримати демо</a>
+    <a class="logo" href="#top"><b>Лад</b><i>CRM під ваш процес</i></a>
+    <nav>
+      <a href="#produkt">Про продукт</a>
+      <a href="#proces">Як це працює</a>
+      <a href="#bezpeka">Безпека</a>
+      <a href="#tsiny">Ціни</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn white" href="#demo">Отримати демо <span class="ar">→</span></a>
   </div>
 </header>
 
-<!-- 01 ГЕРОЙ -->
-<section class="hero">
-  <div class="wrap">
-    <span class="eyebrow">Індивідуальна CRM-система для бізнесу</span>
-    <h1 style="margin-top:13px">CRM, яку налаштуємо <u>під ваш бізнес</u></h1>
-    <p class="lede">
-      Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти.
-      Ви показуєте, як працюєте зараз — ми налаштовуємо систему під цей процес.
-    </p>
-    <div class="btnrow">
-      <a class="btn" href="#demo">Показати, як це працюватиме у нас</a>
-      <a class="btn ghost" href="#vyglyad">Подивитися демо</a>
+<!-- ГЕРОЙ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">CRM система для бізнесу</span>
+      <h1>CRM, яку налаштуємо під ваш бізнес</h1>
+      <p class="lede">Зберемо в одній системі клієнтів, заявки, задачі, замовлення,
+        команду та звіти. Ви показуєте, як працюєте зараз — ми налаштовуємо систему
+        під цей процес.</p>
+      <div class="hero-btns">
+        <a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a>
+        <a class="btn line" href="#demo">Обговорити свій процес</a>
+      </div>
+      <div class="specs">
+        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Від $100 за запуск</span>
+        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Готова система за 30 днів</span>
+        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Ваш сервер</span>
+        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16"/><path d="M14.5 5.5l4 4L8 20H4v-4z"/></svg>Місяць правок після запуску</span>
+      </div>
     </div>
-
-    <dl class="specs">
-      <div><dt>Від $100</dt><dd>за запуск системи</dd></div>
-      <div><dt>30 днів</dt><dd>до готової системи</dd></div>
-      <div><dt>Ваш сервер</dt><dd>дані залишаються у вас</dd></div>
-      <div><dt>Місяць правок</dt><dd>після запуску, без доплат</dd></div>
-    </dl>
-  </div>
-</section>
-
-<!-- 02 ДЕМО -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Демо</span>
-    <h2 style="margin-top:13px">Так виглядає система зсередини</h2>
-    <p class="lede">Це екран робочої системи, а не макет. У вашій будуть ваші назви етапів,
-      ваші показники і тільки ті розділи, якими ви справді користуєтесь.</p>
-    <div class="shotwrap">
-      <img src="shots/dashboard.png" alt="Головний екран системи з показниками і задачами" width="3200" height="2000">
-    </div>
-    <div class="cta">
-      <a class="btn sm" href="#demo">Подивитися демо</a>
-      <span>Покажемо живу систему, а не презентацію.</span>
+    <div class="device-wrap">
+      <div class="device">
+        <div class="device-bar"><i></i><i></i><i></i></div>
+        <img src="shots/board.png" alt="Дошка замовлень у системі Лад" width="3200" height="2000">
+      </div>
+      <div class="float">
+        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+        <span><b>Нова заявка</b><span>Вебсайт · 12:24</span></span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 03 ПРОБЛЕМА -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Навіщо це потрібно</span>
-    <h2 style="margin-top:13px">Коли інформація розкидана по таблицях і чатах,
-      керувати бізнесом стає складніше</h2>
-
-    <div class="qs">
-      <div><span class="n">01</span>Скільки заявок прийшло цього місяця?</div>
-      <div><span class="n">02</span>Які замовлення принесли прибуток?</div>
-      <div><span class="n">03</span>Хто зараз перевантажений, а де команда простоює?</div>
+<!-- ПОКАЗУЄМО -->
+<section id="produkt">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Не розповідаємо — показуємо</span>
+      <h2 style="margin-top:14px">Вся робота по проектах на одному екрані</h2>
+      <p class="lede">Заявки, задачі, відповідальні, дедлайни та бюджет — в одному
+        зрозумілому інтерфейсі. Ви завжди бачите, що відбувається в бізнесі.</p>
+      <div style="margin-top:26px"><a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a></div>
     </div>
-    <p class="note">Якщо на це потрібно збирати інформацію з кількох чатів, таблиць
-      і телефонів — частину даних ви вже втрачаєте.</p>
-
-    <h3 style="margin-top:34px;font-size:clamp(19px,2.2vw,23px);font-weight:800">
-      Що починає губитися, коли бізнес росте</h3>
-    <div class="grid3">
-      <div><h3>Заявка загубилась</h3>
-        <p>Клієнт написав увечері, повідомлення залишилось у чаті, а менеджер побачив його
-          через два дні.</p></div>
-      <div><h3>Про клієнта згадали занадто пізно</h3>
-        <p>Після покупки ніхто не повернувся до нього з новою пропозицією.</p></div>
-      <div><h3>Інформація залишається у співробітника</h3>
-        <p>Контакти, домовленості та історія клієнта не повинні зберігатися тільки
-          в телефоні менеджера.</p></div>
-      <div><h3>Незрозуміло, скільки коштувало замовлення</h3>
-        <p>Години, переробки й витрати не зводяться разом, тому прибуток по кожному
-          замовленню лишається приблизним.</p></div>
-      <div><h3>Про зрив терміну дізнаються останніми</h3>
-        <p>Не з графіка й не від керівника, а від самого замовника, коли вже пізно
-          щось переграти.</p></div>
-      <div><h3>Щоб зрозуміти стан справ, потрібна нарада</h3>
-        <p>Керівник збирає картину вручну: обдзвонює людей, зводить таблиці, уточнює статуси.</p></div>
-    </div>
-
-    <div class="cta">
-      <a class="btn sm" href="#demo">Розібрати мій процес</a>
-      <span>Безкоштовна розмова на 30 хвилин.</span>
+    <div>
+      <div class="callouts">
+        <span class="callout">Заявки і задачі</span>
+        <span class="callout">Відповідальний</span>
+        <span class="callout">Дедлайн</span>
+        <span class="callout">Статус</span>
+      </div>
+      <div class="frame"><img src="shots/board.png" alt="Дошка проєкту: задачі за статусами" loading="lazy" width="3200" height="2000"></div>
     </div>
   </div>
 </section>
 
-<!-- 04 ЩО БУДЕ В СИСТЕМІ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Склад системи</span>
-    <h2 style="margin-top:13px">Що ви будете бачити в системі щодня</h2>
-    <p class="lede">Вмикаємо тільки ті розділи, які закривають ваші процеси.
-      За те, чим ви не користуєтесь, платити не потрібно.</p>
-
-    <div class="grid3">
-      <div><h3>Заявки</h3><p>Звідки прийшов клієнт і на якому етапі він зараз.</p></div>
-      <div><h3>Замовлення і проєкти</h3><p>Терміни, бюджет, витрачений час і поточний статус.</p></div>
-      <div><h3>Команда</h3><p>Хто чим зайнятий і де є прострочення.</p></div>
-      <div><h3>Клієнти</h3><p>Історія роботи і ті, до кого час повернутися.</p></div>
-      <div><h3>Фінанси</h3><p>Скільки коштувало замовлення і скільки на ньому залишилось.</p></div>
-      <div><h3>Документи і сповіщення</h3><p>Рахунки й акти з ваших шаблонів, повідомлення
-        в Telegram команді та клієнту.</p></div>
+<!-- ПРОБЛЕМА -->
+<section style="background:var(--bg-2)">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Проблема</span>
+      <h2 style="margin-top:14px">Коли інформація живе в чатах і таблицях, керувати стає складніше</h2>
+      <p class="lede">Якщо на це потрібно збирати інформацію з кількох чатів, таблиць
+        і телефонів — частину даних ви вже втрачаєте.</p>
+    </div>
+    <div class="cards4">
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <h3>Заявка загубилась</h3>
+        <p>Клієнт написав увечері, а менеджер побачив через два дні.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h3>Про клієнта згадали пізно</h3>
+        <p>Після покупки ніхто не повернувся до нього з новою пропозицією.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+        <h3>Інформація у співробітника</h3>
+        <p>Контакти та історія клієнта не повинні зберігатися в телефоні менеджера.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 4-6"/></svg></span>
+        <h3>Немає розуміння завантаженості</h3>
+        <p>Складно побачити, хто перевантажений, а де є простої.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 05 ЯК ВИГЛЯДАЄ -->
-<section id="vyglyad">
+<!-- МОЖЛИВОСТІ -->
+<section id="mozhlyvosti">
   <div class="wrap">
-    <span class="eyebrow">Інтерфейс</span>
-    <h2 style="margin-top:13px">Не розповідаємо, як це виглядатиме, — показуємо</h2>
-
-    <p class="shotcap" style="margin-top:26px">Вся робота — на одному екрані</p>
-    <p>Замість обдзвону й зведення таблиць керівник відкриває одну сторінку
-      і бачить стан кожного замовлення.</p>
-    <div class="shotwrap">
-      <img src="shots/board.png" alt="Дошка замовлень за статусами" loading="lazy" width="3200" height="2000">
-      <span class="dot" style="left:36.8%;top:27%">1</span>
-      <span class="dot" style="left:23%;top:32.6%">2</span>
-      <span class="dot" style="left:20.5%;top:38.4%">3</span>
-      <span class="dot" style="left:33%;top:38.4%">4</span>
-    </div>
-    <div class="legend">
-      <div><b>1</b><span>Статус роботи</span></div>
-      <div><b>2</b><span>Заявка або замовлення</span></div>
-      <div><b>3</b><span>Термін виконання</span></div>
-      <div><b>4</b><span>Відповідальний</span></div>
-    </div>
-
-    <p class="shotcap">Власник бачить цифри без Excel-звітів</p>
-    <p>Скільки часу пішло на замовлення, який бюджет використано і хто скільки зробив —
-      рахується само, поки команда просто працює.</p>
-    <div class="shotwrap">
-      <img src="shots/reports.png" alt="Звіти: замовлення, час, бюджет" loading="lazy" width="3200" height="2000">
-    </div>
-    <p class="hint" style="margin-top:12px">На знімках — демонстраційні дані.</p>
-
-    <div class="cta">
-      <a class="btn sm" href="#demo">Показати, як це буде у нас</a>
-      <span>Відповімо протягом доби.</span>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="split">
+      <div>
+        <span class="eyebrow">Можливості</span>
+        <h2 style="margin-top:14px">Що ви будете бачити в системі щодня</h2>
+        <p class="lede">Уся ключова інформація про клієнтів, проекти, команду та фінанси
+          в одному місці. Вмикаємо тільки те, що потрібно саме вам.</p>
+        <div style="margin-top:26px"><a class="btn" href="#demo">Розібрати мій процес <span class="ar">→</span></a></div>
+      </div>
+      <div class="feat">
+        <div class="feat-l">
+          <h3 id="f-title">—</h3>
+          <ul id="f-list"></ul>
+        </div>
+        <div class="feat-r">
+          <img src="shots/dashboard.png" alt="Робочий екран системи" loading="lazy" width="3200" height="2000">
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 06 ЯК ВПРОВАДЖУЄМО -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Впровадження</span>
-    <h2 style="margin-top:13px">Як ми запускаємо систему за 30 днів</h2>
-
+<!-- ЯК ЦЕ ВІДБУВАЄТЬСЯ -->
+<section id="proces" style="background:var(--bg-2)">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Як це відбувається</span>
+      <h2 style="margin-top:14px">Запускаємо систему за 30 днів</h2>
+      <p class="lede">Результат через 30 днів — не макет і не демо.
+        Ви вже працюєте у своїй системі.</p>
+    </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><div><h3>Розбираємо ваш процес</h3></div>
-        <p>Спілкуємось і дивимось, як зараз проходять заявки, замовлення й робота команди.</p></div>
-      <div class="step"><div class="n">02</div><div><h3>Збираємо першу версію</h3></div>
-        <p>Налаштовуємо систему, ролі, статуси й задачі та переносимо потрібні дані.</p></div>
-      <div class="step"><div class="n">03</div><div><h3>Ви починаєте працювати</h3></div>
-        <p>Команда заходить у систему і користується нею в реальній роботі.</p></div>
-      <div class="step"><div class="n">04</div><div><h3>Доробляємо</h3></div>
-        <p>Перший місяць збираємо зауваження і безкоштовно виправляємо те, що виявилось незручним.</p></div>
-    </div>
-    <p class="result">Результат через 30 днів — не макет і не демо. Ви вже працюєте у своїй системі.</p>
-
-    <div class="cta">
-      <a class="btn sm" href="#demo">Розібрати мій процес</a>
-      <span>Перший крок можна почати вже наступного тижня.</span>
+      <div class="stp"><div class="n">01</div><h3>Розбираємо ваш процес</h3>
+        <p>Знаходимо, як зараз ідуть заявки, замовлення і робота команди.</p></div>
+      <div class="stp"><div class="n">02</div><h3>Збираємо першу версію</h3>
+        <p>Налаштовуємо систему, ролі, статуси, переносимо необхідні дані.</p></div>
+      <div class="stp"><div class="n">03</div><h3>Ви починаєте працювати</h3>
+        <p>Команда заходить у систему і використовує її в реальній роботі.</p></div>
+      <div class="stp"><div class="n">04</div><h3>Доробляємо</h3>
+        <p>Перший місяць збираємо зауваження і безкоштовно виправляємо незручне.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 07 БЕЗПЕКА -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Дані та доступи</span>
-    <h2 style="margin-top:13px">Ваші дані залишаються у вас</h2>
-    <p class="lede">Система працює на сервері, який оформлений на вас. Ви самі контролюєте
-      доступ до даних, резервні копії та доступ нашої команди.</p>
-
-    <div class="grid3">
-      <div><h3>Ваш сервер</h3><p>Дані не зберігаються в нашій спільній базі з іншими компаніями.</p></div>
-      <div><h3>Ролі та доступи</h3><p>Кожен співробітник бачить тільки те, що потрібно для роботи.</p></div>
-      <div><h3>Історія дій</h3><p>Видно, хто і коли працював із даними.</p></div>
-      <div><h3>Експорт</h3><p>Ви можете забрати свої дані без нашого дозволу, у відкритому форматі.</p></div>
+<!-- БЕЗПЕКА -->
+<section class="dark" id="bezpeka">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Безпека</span>
+      <h2 style="margin-top:14px;color:#fff">Ваші дані залишаються у вас</h2>
+      <p class="lede">Система працює на сервері, який оформлений на вас. Ви самі
+        контролюєте доступ до даних, резервні копії та доступ нашої команди.</p>
+      <div style="margin-top:26px"><a class="btn" href="#demo">Детальніше про безпеку <span class="ar">→</span></a></div>
     </div>
-  </div>
-</section>
-
-<!-- 08 ОЦІНКА ЧАСУ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Орієнтир</span>
-    <h2 style="margin-top:13px">Оцініть вартість ручної роботи</h2>
-    <p class="lede">Прикиньте, скільки часу команда витрачає на пошук інформації,
-      уточнення статусів і повторну роботу.</p>
-
-    <div class="calc">
-      <div class="fields">
-        <div class="f"><label for="ppl">Людей у команді</label>
-          <div class="r"><input type="range" id="ppl" min="5" max="80" step="1" value="12"><span class="v" id="ppl-v">12</span></div></div>
-        <div class="f"><label for="rate">Середня вартість години роботи, ₴</label>
-          <div class="r"><input type="range" id="rate" min="100" max="1200" step="25" value="250"><span class="v" id="rate-v">250</span></div></div>
-        <div class="f"><label for="hrs">Годин на тиждень на пошук і уточнення</label>
-          <div class="r"><input type="range" id="hrs" min="0.5" max="10" step="0.5" value="3"><span class="v" id="hrs-v">3,0</span></div></div>
+    <div class="diagram">
+      <div class="dnode">
+        <span class="dic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+        <b>Ваш сервер</b>
       </div>
-      <div class="readout">
-        <span class="eyebrow">Орієнтовна вартість часу за рік</span>
-        <p class="big" id="loss">432 000 ₴</p>
-        <div class="cmp"><span>Система за перший рік</span><span id="cost">30 800 ₴</span></div>
+      <span class="darrow">→</span>
+      <div class="dnode core"><b>Лад</b><span>CRM-система</span></div>
+      <span class="darrow">→</span>
+      <div class="dnode">
+        <span class="dic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+        <b>Ваша команда</b>
       </div>
     </div>
-    <p class="hint" style="margin-top:16px">Розрахунок показує вартість часу, який команда витрачає
-      на пошук інформації, перевірку статусів та повторну роботу. Це не прогноз ваших фактичних втрат.<br>
-      Перший рік = $100 за запуск + десять місяців підписки. Курс 44 ₴/$.</p>
+  </div>
+  <div class="wrap" style="margin-top:44px">
+    <div class="cards4">
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/></svg></span>
+        <h3>Ваш сервер</h3><p>Дані не зберігаються в нашій спільній базі з іншими компаніями.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></span>
+        <h3>Ролі та доступи</h3><p>Кожен співробітник бачить тільки те, що потрібно для роботи.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h3>Історія дій</h3><p>Видно, хто і коли працював з даними.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></span>
+        <h3>Експорт даних</h3><p>Ви можете забрати свої дані без нашого дозволу.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 09 ЦІНА -->
-<section id="tsina">
-  <div class="wrap">
-    <span class="eyebrow">Вартість</span>
-    <h2 style="margin-top:13px">Скільки коштує система</h2>
-
+<!-- ЦІНИ -->
+<section id="tsiny">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Ціни</span>
+      <h2 style="margin-top:14px">Скільки коштує система</h2>
+    </div>
     <div class="flow">
-      <div><p class="mo">Старт</p><p class="amt">$100</p>
-        <p>Одноразовий платіж за запуск.</p></div>
-      <div><p class="mo">Місяць 1</p><p class="amt">Збірка</p>
-        <p>Розбір процесу, налаштування, перенесення даних, навчання команди.</p></div>
-      <div><p class="mo">Місяць 2</p><p class="amt">Правки</p>
-        <p>Виправляємо те, що виявилось незручним у реальній роботі. Без доплат.</p></div>
-      <div><p class="mo">З місяця 3</p><p class="amt sub">від $60</p>
-        <p>Щомісячна підписка: оновлення, резервні копії, підтримка.</p></div>
+      <div class="fnode on"><span class="fi">●</span><span><b>Місяць 1</b><span>Збірка і запуск</span></span></div>
+      <div class="fnode on"><span class="fi">●</span><span><b>Місяць 2</b><span>Правки за результатами роботи</span></span></div>
+      <div class="fnode"><span class="fi">$</span><span><b>Місяць 3+</b><span>від $60 / місяць</span></span></div>
     </div>
+  </div>
 
-    <div class="tariffs">
-      <div><p class="p">$60 / місяць</p><p class="u">до 15 користувачів</p></div>
-      <div><p class="p">$80 / місяць</p><p class="u">до 40 користувачів</p></div>
-      <div><p class="p">від $120 / місяць</p><p class="u">для команд понад 40 людей</p></div>
+  <div class="wrap">
+    <div class="price-grid">
+      <div class="pstart">
+        <span class="lbl">Старт —</span>
+        <span class="amt">$100</span>
+        <p>Розробка і налаштування системи під ваш процес. Перші два місяці входять у цей платіж.</p>
+      </div>
+      <div class="ptier">
+        <p class="amt">$60 / місяць</p>
+        <p class="u">до 15 користувачів</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Повний функціонал</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Підтримка</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Оновлення</li>
+        </ul>
+      </div>
+      <div class="ptier">
+        <p class="amt">$80 / місяць</p>
+        <p class="u">до 40 користувачів</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Повний функціонал</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Підтримка</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Оновлення</li>
+        </ul>
+      </div>
+      <div class="ptier">
+        <p class="amt">від $120 / місяць</p>
+        <p class="u">понад 40 користувачів</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Повний функціонал</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Підтримка</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Оновлення</li>
+        </ul>
+      </div>
+      <div class="pnote">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/></svg>
+        <p>Сервер оплачується окремо — орієнтовно 300–550 ₴ на місяць, напряму провайдеру.</p>
+      </div>
     </div>
-    <p class="hint" style="margin-top:14px">Сервер оплачується окремо — орієнтовно 300–550 ₴/міс, напряму провайдеру.</p>
+  </div>
+</section>
 
-    <p class="included"><b>У підписку входить:</b> оновлення системи, резервні копії, підтримка
-      і дрібні доробки. Рахуються тільки співробітники, які заходять у систему — ваші клієнти
-      й підрядники доступ отримують безкоштовно.</p>
+<!-- КОМУ ПІДІЙДЕ -->
+<section style="background:var(--bg-2)">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Кому підійде</span>
+      <h2 style="margin-top:14px">Це рішення для команд, які хочуть порядок у процесах</h2>
+      <p class="lede">Підійде, якщо у вас від 5 людей, кілька проектів одночасно
+        і заявки з різних каналів.</p>
+    </div>
+    <div class="fit">
+      <div class="fitcard yes">
+        <div class="hd"><span class="m"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg></span><b>Підійде, якщо у вас:</b></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>5+ людей у команді</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>кілька проектів одночасно</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>заявки з різних каналів</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>робота через Excel і чати</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>потрібен контроль процесів</li>
+        </ul>
+      </div>
+      <div class="fitcard no">
+        <div class="hd"><span class="m"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg></span><b>Не потрібно, якщо у вас:</b></div>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>1–2 людини в команді</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>тільки склад</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>тільки каса і ПРРО</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>тільки маркетплейси</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>вистачає таблиці</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ГАРАНТІЯ + FAQ -->
+<section id="faq">
+  <div class="wrap gwrap">
     <div class="guarantee">
+      <div class="shield"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div>
+      <span class="eyebrow">Гарантія</span>
+      <p class="big">30 ДНІВ</p>
       <h3>Не запустили за 30 днів — повернемо $100</h3>
       <p>Якщо через 30 днів система не запущена і команда не може нею користуватися,
         повертаємо стартовий платіж.</p>
     </div>
-
-    <div class="cta">
-      <a class="btn sm" href="#demo">Отримати демо під свій бізнес</a>
-      <span>За розмову і демо платити не потрібно.</span>
-    </div>
-  </div>
-</section>
-
-<!-- 10 КОМУ ПІДХОДИТЬ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Чесно</span>
-    <h2 style="margin-top:13px">Кому система підходить, а кому — ні</h2>
-    <div class="fit">
-      <div>
-        <h3>Підходить</h3>
-        <ul>
-          <li>Команда від 5 людей</li>
-          <li>Кілька замовлень або проєктів одночасно</li>
-          <li>Повторювані процеси: заявка → робота → здача → оплата</li>
-          <li>Робота зараз ведеться в таблицях, чатах або застарілій системі</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Не потрібна</h3>
-        <ul>
-          <li><b>1–2 людини</b> — вам, скоріш за все, вистачить таблиці</li>
-          <li><b>Склад і маркетплейси</b> — для цього краще спеціалізована система</li>
-          <li><b>Фіскалізація і каса</b> — тут потрібні окремі рішення</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 11 FAQ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">Питання</span>
-    <h2 style="margin-top:13px">Часті питання</h2>
     <div class="faq">
-      <details open><summary>Чому $100, коли студії просять від $3 000?</summary>
-        <div class="ans">Ми не пишемо систему з нуля. Базові модулі вже зібрані — ми додаємо
-          вашу специфіку. І заробляємо на підписці, а не на одному великому чеку.</div></details>
-      <details><summary>А ми не зберемо таке саме самі за допомогою ШІ?</summary>
+      <h2 style="margin-bottom:18px">Відповіді на часті питання</h2>
+      <details open><summary>Скільки часу займає впровадження?</summary>
+        <div class="ans">30 днів: тиждень на розбір процесу, тиждень на збірку з вашими даними,
+          далі запуск і місяць безкоштовних правок.</div></details>
+      <details><summary>Чи потрібні технічні знання з нашого боку?</summary>
+        <div class="ans">Ні. Сервер оформлюємо й налаштовуємо ми, ви тільки оплачуєте його
+          напряму провайдеру. Команду навчаємо по ролях: керівнику — одне, виконавцю — дві дії.</div></details>
+      <details><summary>Ми можемо зібрати таке саме самі за допомогою ШІ?</summary>
         <div class="ans">Прототип — так. Робоча система потребує ще налаштування прав доступу,
           резервних копій, перенесення даних, інтеграцій і подальшої підтримки.
           Ми беремо цю частину на себе.</div></details>
-      <details><summary>У нас усе в Excel і чатах. Скільки займе перенесення?</summary>
-        <div class="ans">Другий тиждень із чотирьох. Переносимо клієнтів, поточні замовлення,
-          виконавців і терміни. Excel можна вести паралельно перші два тижні.</div></details>
-      <details><summary>Що буде, якщо ми припинимо платити?</summary>
-        <div class="ans">Сервер і дані ваші. Ви втрачаєте оновлення, підтримку й доробки —
-          не доступ до власної інформації.</div></details>
-      <details><summary>Команда не захоче користуватися новою системою</summary>
-        <div class="ans">Виконавцю потрібні дві дії: взяти роботу і здати її. Решту
-          заповнює керівник або система. Якщо від людини вимагати п'ять полів, вона не заповнить жодного.</div></details>
+      <details><summary>Де зберігаються наші дані?</summary>
+        <div class="ans">На сервері, оформленому на вас. Не в спільній базі з іншими компаніями.
+          Доступ відкриваєте ви поіменно, вивантажити все можна будь-коли.</div></details>
+      <details><summary>Що входить у щомісячну оплату?</summary>
+        <div class="ans">Оновлення системи, резервні копії, підтримка і дрібні доробки.
+          Рахуються тільки співробітники, які заходять у систему, — ваші клієнти
+          й підрядники безкоштовні.</div></details>
     </div>
   </div>
 </section>
 
-<!-- 12 ФОРМА -->
-<section class="formsec" id="demo">
-  <div class="wrap">
-    <span class="eyebrow">Демо</span>
-    <h2 style="margin-top:13px">Покажемо, як CRM може виглядати у вашому бізнесі</h2>
-    <p class="lede">Залиште імʼя та Telegram. Повернемось протягом доби.</p>
-
-    <form id="form1">
-      <div><label for="f-name">Ім'я</label>
-        <input type="text" id="f-name" placeholder="Як до вас звертатись" required></div>
-      <div><label for="f-contact">Telegram або телефон</label>
-        <input type="text" id="f-contact" placeholder="@nickname або +380" required></div>
-      <div class="full"><button class="btn" type="submit">Отримати демо</button></div>
-    </form>
-
-    <div class="got" id="got" hidden>
-      <h3>Заявку прийнято</h3>
-      <p id="got-text"></p>
+<!-- ФІНАЛ -->
+<section class="final" id="demo">
+  <div class="wrap fgrid">
+    <div>
+      <span class="eyebrow">Отримати демо</span>
+      <h2 style="margin-top:14px">Покажемо, як CRM може виглядати у вашому бізнесі</h2>
+      <p class="lede">Залиште ім'я та Telegram. Повернемось протягом доби
+        і покажемо живу систему, а не презентацію.</p>
     </div>
-
-    <div class="optional" id="optional" hidden>
-      <span class="eyebrow">Необовʼязково</span>
-      <p class="sub">Якщо відповісте на три питання, демо буде точнішим.
-        Можна пропустити — ми все одно повернемось.</p>
-      <form id="form2">
-        <div><label for="f-ind">Сфера бізнесу</label>
-          <input type="text" id="f-ind" placeholder="Напишіть своїми словами"></div>
-        <div><label for="f-size">Скільки людей працюватиме в системі</label>
-          <select id="f-size"><option value="">Оберіть</option>
-            <option>1–4</option><option>5–15</option><option>15–40</option>
-            <option>40–100</option><option>Більше 100</option></select></div>
-        <div class="full"><label for="f-now">У чому ведете роботу зараз</label>
-          <select id="f-now"><option value="">Оберіть</option>
-            <option>Excel, Google Таблиці, чати, папір</option>
-            <option>Трелло, Ноушн, таск-менеджер</option>
-            <option>Залишки Бітрікс24</option>
-            <option>Інша CRM</option></select></div>
-        <div class="full"><button class="btn" type="submit">Надіслати</button></div>
+    <div class="formcard">
+      <form id="lead">
+        <div class="fld"><label for="f-name">Ім'я</label>
+          <input type="text" id="f-name" placeholder="Як до вас звертатись" required></div>
+        <div class="fld"><label for="f-contact">Telegram / телефон</label>
+          <input type="text" id="f-contact" placeholder="@nickname або +380" required></div>
+        <button class="btn" type="submit">Отримати демо <span class="ar">→</span></button>
+        <p class="sm">Відповідаємо протягом доби. За розмову і демо платити не потрібно.</p>
       </form>
-    </div>
-
-    <div class="done" id="done" hidden>
-      <h3>Дякуємо</h3><p id="done-text"></p>
+      <div class="ok" id="ok" hidden></div>
     </div>
   </div>
 </section>
@@ -597,47 +623,51 @@ footer p{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-trans
   <p>Україна · дані на сервері замовника</p>
 </div></footer>
 
-<div class="dock"><div class="wrap">
-  <p>Демо живої системи і розбір процесу — безкоштовно</p>
-  <a class="btn sm" href="#demo">Отримати демо під свій бізнес</a>
-</div></div>
-
 <script>
 (function(){
-var ppl=document.getElementById('ppl'),rate=document.getElementById('rate'),hrs=document.getElementById('hrs');
-function fmt(n){ return Math.round(n).toLocaleString('uk-UA').replace(/ /g,' ')+' ₴'; }
-function calc(){
-  var p=+ppl.value,r=+rate.value,h=+hrs.value;
-  document.getElementById('ppl-v').textContent=p;
-  document.getElementById('rate-v').textContent=r;
-  document.getElementById('hrs-v').textContent=h.toFixed(1).replace('.',',');
-  var sub = p<=15?60 : (p<=40?80 : 120+(p-40)*2);
-  document.getElementById('loss').textContent=fmt(p*h*48*r);
-  document.getElementById('cost').textContent=fmt((sub*10+100)*44);
+var TABS=[
+ {k:"Заявки",t:"Заявки з усіх каналів в одному місці",
+  l:["Всі звернення з сайту, соцмереж і месенджерів","Канбан по етапах","Відповідальний і дедлайн","Джерело заявки","Коментарі та файли"]},
+ {k:"Проекти",t:"Проекти та замовлення з термінами",
+  l:["Етапи з вашими назвами","Графік робіт із залежностями","Бюджет і фактичні витрати","Файли й погодження документів","Історія змін"]},
+ {k:"Команда",t:"Хто чим зайнятий прямо зараз",
+  l:["Завантаженість у відсотках від норми","Прострочення підсвічуються","Ролі та права доступу","Облік витраченого часу","Робота з телефону"]},
+ {k:"Клієнти",t:"База клієнтів, яка лишається компанії",
+  l:["Історія звернень і замовлень","Контакти та домовленості","Клієнти, до яких час повернутися","Сегменти для розсилок","Доступ за ролями"]},
+ {k:"Гроші",t:"Скільки коштувало замовлення",
+  l:["План проти факту по кожному замовленню","Години і ставки","Витрати і маржа","Контроль оплат","Фінанси приховані за замовчуванням"]},
+ {k:"Звіти",t:"Цифри без Excel-звітів",
+  l:["Звідки приходять клієнти","Результат кожного в команді","Завантаження по місяцях","Вивантаження в Excel","Дашборд власника"]}
+];
+var tabs=document.getElementById('tabs'), title=document.getElementById('f-title'), list=document.getElementById('f-list');
+TABS.forEach(function(x,i){
+  var b=document.createElement('button');
+  b.type='button'; b.className='tab'; b.textContent=x.k; b.setAttribute('role','tab');
+  b.setAttribute('aria-selected', i===0?'true':'false');
+  b.addEventListener('click',function(){ pick(i); });
+  tabs.appendChild(b);
+});
+function pick(i){
+  [].forEach.call(tabs.children,function(c,k){ c.setAttribute('aria-selected',k===i?'true':'false'); });
+  title.textContent=TABS[i].t;
+  list.innerHTML='';
+  TABS[i].l.forEach(function(t){
+    var li=document.createElement('li');
+    li.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>';
+    li.appendChild(document.createTextNode(t));
+    list.appendChild(li);
+  });
 }
-[ppl,rate,hrs].forEach(function(e){ e.addEventListener('input',calc); });
-calc();
+pick(0);
 
-document.getElementById('form1').addEventListener('submit',function(e){
+document.getElementById('lead').addEventListener('submit',function(e){
   e.preventDefault();
   var nm=document.getElementById('f-name').value;
-  document.getElementById('got-text').textContent =
-    nm+', ми отримали заявку і повернемось протягом доби. '+
+  var ok=document.getElementById('ok');
+  ok.innerHTML='<b>Заявку прийнято</b>'+nm+', ми повернемось протягом доби. '+
     '(Макет: форму ще не підключено до пошти й Telegram.)';
-  document.getElementById('got').hidden=false;
+  ok.hidden=false;
   this.hidden=true;
-  document.getElementById('optional').hidden=false;
-  document.getElementById('got').scrollIntoView({behavior:'smooth',block:'center'});
-});
-
-document.getElementById('form2').addEventListener('submit',function(e){
-  e.preventDefault();
-  document.getElementById('done-text').textContent =
-    'Деталі отримали — підготуємо демо під ваші процеси. '+
-    '(Макет: форму ще не підключено до пошти й Telegram.)';
-  document.getElementById('optional').hidden=true;
-  document.getElementById('done').hidden=false;
-  document.getElementById('done').scrollIntoView({behavior:'smooth',block:'center'});
 });
 })();
 </script>
