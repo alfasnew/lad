@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Лад — розробимо CRM з нуля під ваш бізнес</title>
+<title>LAD — розробимо CRM з нуля під ваш бізнес</title>
 <meta name="description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Розробка з нуля під ваш процес, запуск за 30 днів. Дані на вашому сервері.">
 <meta name="theme-color" content="#101511">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F7D4F'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3E%D0%9B%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Лад — розробимо CRM з нуля під ваш бізнес">
+<meta property="og:title" content="LAD — розробимо CRM з нуля під ваш бізнес">
 <meta property="og:description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Розробка з нуля під ваш процес, запуск за 30 днів.">
 <meta property="og:locale" content="uk_UA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,14 +70,14 @@ header{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;
   padding-top:18px;padding-bottom:18px}
 .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
-.logo b{font-family:var(--f-d);font-weight:800;font-size:24px;letter-spacing:-.045em;color:#fff}
+.logo b{font-family:var(--f-d);font-weight:800;font-size:24px;letter-spacing:.015em;color:#fff}
 .logo i{font-style:normal;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
   color:var(--on-dark-2);font-weight:600}
 nav{display:flex;gap:26px}
 nav a{font-size:14.5px;font-weight:500;color:var(--on-dark-2);text-decoration:none}
 nav a:hover{color:#fff}
 @media(max-width:940px){nav{display:none}}
-@media(max-width:520px){.logo i{display:none}}
+@media(max-width:1000px){.logo i{display:none}}
 
 /* герой */
 .hero{position:relative;overflow:hidden;background:var(--dark);border-top:0;padding:0;
@@ -123,7 +123,8 @@ nav a:hover{color:#fff}
 
 /* картки */
 .cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:1000px){.cards4{grid-template-columns:repeat(2,1fr)}}
+.cards4>*{min-width:0}
+@media(max-width:1180px){.cards4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.cards4{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px}
 .card .ic{width:38px;height:38px;border-radius:10px;background:var(--green-soft);color:var(--green);
@@ -286,7 +287,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#top"><b>Лад</b><i>CRM під ваш бізнес</i></a>
+    <a class="logo" href="#top"><b>LAD</b><i>Системи управління бізнесом</i></a>
     <nav>
       <a href="#produkt">Про продукт</a>
       <a href="#proces">Як це працює</a>
@@ -303,7 +304,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
   <div class="hero-media">
     <div class="hero-frame">
       <img class="photo" src="shots/hero-full.jpg" alt="" width="1672" height="941">
-      <img class="laptop-screen" src="shots/board.png" alt="Дошка замовлень у системі Лад" width="3200" height="2000">
+      <img class="laptop-screen" src="shots/board.png" alt="Дошка замовлень у системі LAD" width="3200" height="2000">
       <div class="float">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
         <span><b>Нова заявка</b><span>Вебсайт · 12:24</span></span>
@@ -496,7 +497,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
         <b>Ваш сервер</b>
       </div>
       <span class="darrow">→</span>
-      <div class="dnode core"><b>Лад</b><span>CRM-система</span></div>
+      <div class="dnode core"><b>LAD</b><span>CRM-система</span></div>
       <span class="darrow">→</span>
       <div class="dnode">
         <span class="dic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
@@ -630,7 +631,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 </section>
 
 <footer><div class="wrap">
-  <p>Лад · CRM під ваш бізнес</p>
+  <p>LAD · Системи управління бізнесом</p>
   <p>Україна · дані на сервері замовника</p>
 </div></footer>
 
