@@ -96,13 +96,11 @@ nav a:hover{color:#fff}
 .spec svg{flex:none;color:var(--green-b)}
 
 /* пристрій зі знімком */
-.device{border-radius:14px;overflow:hidden;background:#fff;
-  box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08)}
-.device-bar{display:flex;gap:6px;align-items:center;padding:10px 13px;background:#EDEFEC;
-  border-bottom:1px solid #DFE3DF}
-.device-bar i{width:9px;height:9px;border-radius:50%;background:#CBD1CB;display:block}
 .device-wrap{position:relative}
-.float{position:absolute;right:-14px;bottom:34px;background:#fff;border-radius:13px;
+.laptop{width:100%;height:auto;border-radius:12px}
+.laptop-screen{position:absolute;left:28.87%;top:25.61%;width:57.46%;height:42.19%;
+  object-fit:cover;object-position:top left;background:#fff}
+.float{position:absolute;right:-10px;bottom:6%;background:#fff;border-radius:13px;
   padding:12px 15px;display:flex;align-items:center;gap:11px;
   box-shadow:0 16px 38px rgba(0,0,0,.3);min-width:186px}
 .float .ico{width:34px;height:34px;border-radius:9px;background:var(--green-soft);
@@ -223,11 +221,20 @@ nav a:hover{color:#fff}
 .fitcard.yes li svg{color:var(--green)}
 .fitcard.no li svg{color:#9AA09B}
 
+
+/* фото зелені збоку блоку «кому підійде» */
+.split3{display:grid;grid-template-columns:.8fr 1.3fr 196px;gap:36px;align-items:start}
+.sidephoto{border-radius:var(--r);overflow:hidden;align-self:stretch;min-height:320px}
+.sidephoto img{width:100%;height:100%;object-fit:cover}
+@media(max-width:1140px){.split3{grid-template-columns:.85fr 1.25fr}.sidephoto{display:none}}
+@media(max-width:980px){.split3{grid-template-columns:1fr;gap:30px}}
+
 /* гарантія + faq */
 .gwrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:center}
 @media(max-width:940px){.gwrap{grid-template-columns:1fr;gap:34px}}
 .guarantee{background:
-  radial-gradient(420px 260px at 20% 30%, rgba(70,169,110,.22), transparent 65%), var(--dark);
+  linear-gradient(100deg, rgba(16,21,17,.72) 0%, rgba(16,21,17,.9) 55%, rgba(16,21,17,.96) 100%),
+  url("shots/dark-leaves.jpg") center/cover no-repeat, var(--dark);
   border-radius:var(--r);padding:34px 32px;color:var(--on-dark);position:relative;overflow:hidden}
 .guarantee .shield{color:var(--green-b);margin-bottom:18px}
 .guarantee .big{font-family:var(--f-d);font-weight:800;font-size:clamp(38px,5vw,54px);
@@ -245,7 +252,8 @@ details[open] summary::after{content:"–"}
 
 /* фінальний блок */
 .final{background:
-  radial-gradient(760px 420px at 80% 30%, rgba(70,169,110,.16), transparent 62%), var(--dark);
+  linear-gradient(90deg, rgba(16,21,17,.82) 0%, rgba(16,21,17,.94) 60%),
+  url("shots/dark-leaves.jpg") left center/cover no-repeat, var(--dark);
   padding:72px 0}
 .fgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
 @media(max-width:940px){.fgrid{grid-template-columns:1fr;gap:34px}}
@@ -305,10 +313,8 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
       </div>
     </div>
     <div class="device-wrap">
-      <div class="device">
-        <div class="device-bar"><i></i><i></i><i></i></div>
-        <img src="shots/board.png" alt="Дошка замовлень у системі Лад" width="3200" height="2000">
-      </div>
+      <img class="laptop" src="shots/hero-laptop.jpg" alt="" width="1112" height="941">
+      <img class="laptop-screen" src="shots/board.png" alt="Дошка замовлень у системі Лад" width="3200" height="2000">
       <div class="float">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
         <span><b>Нова заявка</b><span>Вебсайт · 12:24</span></span>
@@ -471,7 +477,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 
 <!-- КОМУ ПІДІЙДЕ -->
 <section style="background:var(--bg-2)">
-  <div class="wrap split" style="align-items:start">
+  <div class="wrap split3">
     <div>
       <span class="eyebrow">Кому підійде</span>
       <h2 style="margin-top:14px">Це рішення для команд, які хочуть порядок у процесах</h2>
@@ -500,6 +506,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
         </ul>
       </div>
     </div>
+    <div class="sidephoto"><img src="shots/green.jpg" alt="" loading="lazy" width="900" height="1200"></div>
   </div>
 </section>
 
