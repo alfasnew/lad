@@ -80,34 +80,35 @@ nav a:hover{color:#fff}
 @media(max-width:520px){.logo i{display:none}}
 
 /* герой */
-.hero{background:
-  radial-gradient(900px 480px at 78% 18%, rgba(70,169,110,.18), transparent 62%),
-  radial-gradient(700px 400px at 8% 88%, rgba(70,169,110,.09), transparent 60%),
-  var(--dark);
-  padding:72px 0 64px;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.02fr 1.15fr;gap:48px;align-items:center}
-@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}}
-.hero h1{color:#fff;max-width:13ch;margin-top:16px}
-.hero .lede{max-width:46ch}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.specs{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:38px;padding-top:26px;
-  border-top:1px solid rgba(255,255,255,.1)}
-.spec{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--on-dark-2);font-weight:500}
-.spec svg{flex:none;color:var(--green-b)}
-
-/* пристрій зі знімком */
-.device-wrap{position:relative}
-.laptop{width:100%;height:auto;border-radius:12px}
-.laptop-screen{position:absolute;left:28.87%;top:25.61%;width:57.46%;height:42.19%;
+.hero{position:relative;overflow:hidden;background:var(--dark);border-top:0;padding:0;
+  height:clamp(580px,74vh,720px);display:flex;align-items:center}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-frame{position:absolute;top:0;right:0;height:100%;aspect-ratio:1672/941}
+.hero-frame .photo{width:100%;height:100%;object-fit:cover;object-position:center}
+.laptop-screen{position:absolute;left:52.69%;top:25.61%;width:38.22%;height:42.19%;
   object-fit:cover;object-position:top left;background:#fff}
-.float{position:absolute;right:-10px;bottom:6%;background:#fff;border-radius:13px;
-  padding:12px 15px;display:flex;align-items:center;gap:11px;
-  box-shadow:0 16px 38px rgba(0,0,0,.3);min-width:186px}
+.hero-scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(96deg, rgba(16,21,17,.97) 0%, rgba(16,21,17,.92) 26%,
+    rgba(16,21,17,.6) 44%, rgba(16,21,17,.12) 60%, rgba(16,21,17,0) 70%)}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero h1{color:#fff;max-width:13ch;margin-top:16px}
+.hero .lede{max-width:44ch;color:#fff;opacity:.94}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.float{position:absolute;left:72%;top:69%;background:#fff;border-radius:13px;
+  padding:12px 15px;display:flex;align-items:center;gap:11px;z-index:3;
+  box-shadow:0 16px 38px rgba(0,0,0,.4);min-width:186px}
 .float .ico{width:34px;height:34px;border-radius:9px;background:var(--green-soft);
   display:flex;align-items:center;justify-content:center;color:var(--green);flex:none}
 .float b{display:block;font-family:var(--f-d);font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.2}
 .float span{font-size:12.5px;color:var(--ink-3)}
-@media(max-width:560px){.float{right:8px;bottom:12px;transform:scale(.88);transform-origin:right bottom}}
+@media(max-width:900px){
+  .hero{height:auto;padding:52px 0 48px}
+  .hero-frame{position:absolute;inset:0;height:100%;width:100%;aspect-ratio:auto}
+  .hero-frame .photo{object-position:72% center}
+  .laptop-screen,.float{display:none}
+  .hero-scrim{background:linear-gradient(180deg, rgba(16,21,17,.9), rgba(16,21,17,.94))}
+  .hero h1{max-width:none}
+}
 
 /* блок «показуємо» */
 .split{display:grid;grid-template-columns:.85fr 1.25fr;gap:52px;align-items:center}
@@ -236,7 +237,8 @@ nav a:hover{color:#fff}
   linear-gradient(100deg, rgba(16,21,17,.72) 0%, rgba(16,21,17,.9) 55%, rgba(16,21,17,.96) 100%),
   url("shots/dark-leaves.jpg") center/cover no-repeat, var(--dark);
   border-radius:var(--r);padding:34px 32px;color:var(--on-dark);position:relative;overflow:hidden}
-.guarantee .shield{color:var(--green-b);margin-bottom:18px}
+.guarantee .shield{width:88px;height:auto;margin-bottom:16px;
+  filter:drop-shadow(0 10px 24px rgba(0,0,0,.45))}
 .guarantee .big{font-family:var(--f-d);font-weight:800;font-size:clamp(38px,5vw,54px);
   letter-spacing:-.04em;line-height:1;color:#fff}
 .guarantee h3{font-size:clamp(19px,2.2vw,23px);color:#fff;margin:12px 0 12px;line-height:1.25}
@@ -294,31 +296,27 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 
 <!-- ГЕРОЙ -->
 <section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">CRM система для бізнесу</span>
-      <h1>CRM, яку налаштуємо під ваш бізнес</h1>
-      <p class="lede">Зберемо в одній системі клієнтів, заявки, задачі, замовлення,
-        команду та звіти. Ви показуєте, як працюєте зараз — ми налаштовуємо систему
-        під цей процес.</p>
-      <div class="hero-btns">
-        <a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a>
-        <a class="btn line" href="#demo">Обговорити свій процес</a>
-      </div>
-      <div class="specs">
-        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Від $100 за запуск</span>
-        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Готова система за 30 днів</span>
-        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Ваш сервер</span>
-        <span class="spec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16"/><path d="M14.5 5.5l4 4L8 20H4v-4z"/></svg>Місяць правок після запуску</span>
-      </div>
-    </div>
-    <div class="device-wrap">
-      <img class="laptop" src="shots/hero-laptop.jpg" alt="" width="1112" height="941">
+  <div class="hero-media">
+    <div class="hero-frame">
+      <img class="photo" src="shots/hero-full.jpg" alt="" width="1672" height="941">
       <img class="laptop-screen" src="shots/board.png" alt="Дошка замовлень у системі Лад" width="3200" height="2000">
       <div class="float">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
         <span><b>Нова заявка</b><span>Вебсайт · 12:24</span></span>
       </div>
+    </div>
+    <div class="hero-scrim"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">CRM система для бізнесу</span>
+    <h1>CRM, яку налаштуємо <u>під ваш бізнес</u></h1>
+    <p class="lede">
+      Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти.
+      Ви показуєте, як працюєте зараз — ми налаштовуємо систему під цей процес.
+    </p>
+    <div class="btnrow">
+      <a class="btn" href="#demo">Подивитися демо <span class="ar">→</span></a>
+      <a class="btn line" href="#vyglyad">Обговорити свій процес</a>
     </div>
   </div>
 </section>
@@ -514,7 +512,7 @@ footer p{font-size:12.5px;color:var(--on-dark-2)}
 <section id="faq">
   <div class="wrap gwrap">
     <div class="guarantee">
-      <div class="shield"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div>
+      <img class="shield" src="shots/shield.png" alt="" width="360" height="360" loading="lazy">
       <span class="eyebrow">Гарантія</span>
       <p class="big">30 ДНІВ</p>
       <h3>Не запустили за 30 днів — повернемо $100</h3>
