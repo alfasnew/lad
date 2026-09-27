@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Запуск за 30 днів, від $100. Дані на вашому сервері.">
+<meta name="theme-color" content="#B84B21">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B84B21'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3E%D0%9B%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Лад — CRM, яку налаштуємо під ваш бізнес">
+<meta property="og:description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Запуск за 30 днів, від $100. Дані на вашому сервері.">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<title>Лад — CRM, яку налаштуємо під ваш бізнес</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Onest:wght@600;700;800&display=swap">
+
+<style>
+:root{
+  --bg:#F2F1ED; --surface:#FBFAF8; --sunk:#E8E6E0; --line:#D6D3CA;
+  --ink:#1A1C1F; --ink-2:#565A60; --ink-3:#85898F;
+  --rust:#B84B21; --rust-soft:#F6E5DC; --slate:#33566E; --slate-soft:#E0E8ED;
+  --f-disp:"Onest","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+  --maxw:1080px;--pad:54px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131416;--surface:#191B1E;--sunk:#0F1012;--line:#2C2F34;
+  --ink:#EDEBE7;--ink-2:#A5A9AF;--ink-3:#787C82;
+  --rust:#E8794C;--rust-soft:#2B1912;--slate:#7FAAC6;--slate-soft:#15222B;}}
+:root[data-theme="dark"]{
+  --bg:#131416;--surface:#191B1E;--sunk:#0F1012;--line:#2C2F34;
+  --ink:#EDEBE7;--ink-2:#A5A9AF;--ink-3:#787C82;
+  --rust:#E8794C;--rust-soft:#2B1912;--slate:#7FAAC6;--slate-soft:#15222B;}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:74px}
+::selection{background:var(--rust);color:#fff}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-disp);margin:0;line-height:1.14;text-wrap:balance;letter-spacing:-.025em}
+h1{font-size:clamp(33px,4.8vw,54px);font-weight:800}
+h2{font-size:clamp(24px,3.1vw,35px);font-weight:800}
+h3{font-size:18.5px;font-weight:700;letter-spacing:-.015em;line-height:1.3}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.lede{font-size:clamp(16.5px,1.8vw,19px);color:var(--ink-2);max-width:62ch;margin-top:16px}
+.eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+section{padding:54px 0;border-top:1px solid var(--line)}
+@media (max-width:820px){:root{--pad:20px}body{font-size:16px}section{padding:40px 0}}
+
+header{background:var(--surface);position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding-top:13px;padding-bottom:13px}
+.logo{display:flex;align-items:baseline;gap:11px}
+.logo b{font-family:var(--f-disp);font-weight:800;font-size:23px;letter-spacing:-.04em}
+.logo i{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:560px){.logo i{display:none}}
+
+.btn{font-family:var(--f-disp);font-weight:700;font-size:15.5px;letter-spacing:-.01em;
+  padding:13px 24px;border:1.5px solid var(--rust);background:var(--rust);color:#fff;
+  text-decoration:none;cursor:pointer;display:inline-block;border-radius:2px;
+  transition:filter .14s ease,transform .14s ease}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.sm{font-size:14px;padding:10px 18px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink);filter:none}
+.hint{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;line-height:1.7}
+
+.cta{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cta span{font-size:15.5px;color:var(--ink-2)}
+
+/* герой */
+.hero{background:var(--surface);border-top:0;padding:54px 0 46px}
+.hero h1{max-width:17ch}
+.hero h1 u{text-decoration:none;box-shadow:inset 0 -.13em 0 var(--rust-soft), inset 0 -.19em 0 var(--rust)}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;align-items:center}
+.specs{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;border-top:1px solid var(--line)}
+.specs div{padding:16px 18px 18px;border-right:1px solid var(--line)}
+.specs div:last-child{border-right:0}
+.specs dt{font-family:var(--f-disp);font-weight:800;font-size:19px;letter-spacing:-.03em;margin-bottom:6px}
+.specs dd{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.4}
+@media (max-width:860px){.specs{grid-template-columns:repeat(2,1fr)}
+  .specs div{border-bottom:1px solid var(--line)}}
+
+/* знімки */
+.shotwrap{position:relative;margin-top:24px;border:1px solid var(--line);background:var(--surface);overflow:hidden}
+.shotwrap img{display:block;width:100%;height:auto}
+.dot{position:absolute;width:25px;height:25px;border-radius:50%;background:var(--rust);color:#fff;
+  font-family:var(--f-disp);font-weight:800;font-size:12.5px;display:flex;align-items:center;
+  justify-content:center;transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(255,255,255,.9)}
+@media (max-width:700px){.dot{display:none}}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid var(--line)}
+.legend div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 15px;
+  background:var(--sunk)}
+.legend b{font-family:var(--f-disp);font-weight:800;color:var(--rust);font-size:12.5px;
+  display:inline-block;margin-right:6px}
+.legend span{font-size:14px;color:var(--ink-2)}
+@media (max-width:760px){.legend{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.legend{grid-template-columns:1fr}}
+.shotcap{font-family:var(--f-disp);font-weight:800;font-size:clamp(19px,2.3vw,24px);
+  letter-spacing:-.025em;margin-top:34px;line-height:1.25}
+.shotcap + p{font-size:15.5px;color:var(--ink-2);margin-top:8px;max-width:62ch}
+
+/* питання */
+.qs{margin-top:26px;border-top:1px solid var(--line)}
+.qs > div{border-bottom:1px solid var(--line);padding:16px 0;font-family:var(--f-disp);
+  font-weight:700;font-size:clamp(17px,2vw,21px);letter-spacing:-.02em;display:flex;gap:16px}
+.qs .n{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);font-weight:400;padding-top:6px}
+.note{margin-top:20px;font-size:16px;color:var(--ink-2);max-width:64ch;line-height:1.55}
+
+/* картки */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:26px;
+  border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.grid3 > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:20px;background:var(--surface)}
+.grid3 h3{margin-bottom:7px}
+.grid3 p{font-size:15px;color:var(--ink-2);line-height:1.5}
+@media (max-width:860px){.grid3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+
+/* калькулятор */
+.calc{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;margin-top:24px;align-items:start}
+@media (max-width:860px){.calc{grid-template-columns:1fr;gap:22px}}
+.fields{display:flex;flex-direction:column;gap:18px}
+.f label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.f .r{display:flex;align-items:center;gap:14px}
+.f input[type=range]{flex:1;accent-color:var(--slate);height:22px}
+.f .v{font-family:var(--f-disp);font-weight:800;font-size:21px;min-width:68px;text-align:right;
+  font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.readout{background:var(--surface);border:1px solid var(--line);padding:24px 22px}
+.readout .big{font-family:var(--f-disp);font-weight:800;font-size:clamp(32px,5.2vw,46px);line-height:1;
+  color:var(--slate);font-variant-numeric:tabular-nums;letter-spacing:-.035em;margin-top:8px}
+.readout .cmp{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.readout .cmp span:first-child{font-size:15px;color:var(--ink-2)}
+.readout .cmp span:last-child{font-family:var(--f-disp);font-weight:700;font-size:17px;
+  font-variant-numeric:tabular-nums}
+
+/* кроки */
+.steps{margin-top:26px;border-top:1.5px solid var(--ink)}
+.step{display:grid;grid-template-columns:54px 1fr 1.25fr;gap:22px;padding:20px 0;
+  border-bottom:1px solid var(--line);align-items:start}
+.step .n{font-family:var(--f-disp);font-weight:800;font-size:22px;color:var(--rust);
+  letter-spacing:-.03em;line-height:1.1}
+.step p{font-size:15.5px;color:var(--ink-2);line-height:1.5}
+@media (max-width:760px){.step{grid-template-columns:44px 1fr;gap:14px}.step p{grid-column:2}}
+.result{margin-top:22px;padding:16px 20px;background:var(--sunk);border-left:3px solid var(--rust);
+  font-family:var(--f-disp);font-weight:700;font-size:17px;letter-spacing:-.02em;line-height:1.35}
+
+/* ціна */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;
+  border-top:2px solid var(--ink);border-left:1px solid var(--line)}
+.flow > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:20px 18px;background:var(--surface)}
+.flow .mo{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:9px}
+.flow .amt{font-family:var(--f-disp);font-weight:800;font-size:30px;letter-spacing:-.035em;
+  line-height:1;margin-bottom:8px}
+.flow .amt.sub{color:var(--rust)}
+.flow p{font-size:14.5px;color:var(--ink-2);line-height:1.45}
+@media (max-width:860px){.flow{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+.tariffs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:20px;
+  border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.tariffs > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:18px 20px;background:var(--surface)}
+.tariffs .p{font-family:var(--f-disp);font-weight:800;font-size:27px;letter-spacing:-.035em;line-height:1}
+.tariffs .u{font-size:15px;color:var(--ink-2);margin-top:7px}
+@media (max-width:700px){.tariffs{grid-template-columns:1fr}}
+.included{margin-top:20px;font-size:15.5px;color:var(--ink-2);line-height:1.6;max-width:70ch}
+.included b{color:var(--ink);font-family:var(--f-disp);font-weight:700}
+
+/* підходить / ні */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:26px;
+  border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.fit > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 20px;
+  background:var(--surface)}
+.fit h3{margin-bottom:12px}
+.fit ul{margin:0;padding-left:18px;font-size:15px;color:var(--ink-2);line-height:1.55}
+.fit li{margin-bottom:7px}
+@media (max-width:700px){.fit{grid-template-columns:1fr}}
+
+.guarantee{margin-top:26px;border:1.5px solid var(--rust);padding:20px 22px;background:var(--rust-soft)}
+.guarantee h3{font-size:19.5px;font-weight:800;margin-bottom:7px}
+.guarantee p{font-size:15.5px;color:var(--ink-2);line-height:1.55;max-width:68ch}
+
+/* faq */
+.faq{margin-top:22px;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:16px 0;font-family:var(--f-disp);font-weight:700;font-size:17px;
+  letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);color:var(--rust);font-size:17px;flex:none}
+details[open] summary::after{content:"–"}
+.ans{padding:0 0 18px;max-width:70ch;color:var(--ink-2);font-size:15.5px;line-height:1.55}
+
+/* форма */
+.formsec{background:var(--surface)}
+form{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px;max-width:640px}
+.full{grid-column:1/-1}
+@media (max-width:640px){form{grid-template-columns:1fr}}
+form label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+input[type=text],select{width:100%;padding:12px 13px;background:var(--bg);color:var(--ink);
+  border:1px solid var(--line);font-family:var(--f-body);font-size:16px;border-radius:2px}
+input:focus,select:focus{border-color:var(--rust)}
+.got{border:1px solid var(--slate);background:var(--slate-soft);padding:20px 22px;margin-top:20px;max-width:640px}
+.got h3{color:var(--slate);margin-bottom:7px;font-size:19px;font-weight:800}
+.got p{font-size:15.5px;color:var(--ink-2)}
+.optional{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);max-width:640px}
+.optional .eyebrow{display:block;margin-bottom:4px}
+.optional p.sub{font-size:15px;color:var(--ink-2);margin-top:6px}
+.done{border:1.5px solid var(--rust);background:var(--rust-soft);padding:20px 22px;margin-top:20px;max-width:640px}
+.done h3{margin-bottom:7px;font-size:19px;font-weight:800}
+.done p{font-size:15.5px;color:var(--ink-2)}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--ink);color:var(--bg);
+  border-top:1px solid var(--ink)}
+.dock .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.dock p{font-family:var(--f-body);font-weight:600;font-size:14.5px}
+@media (max-width:680px){.dock p{display:none}.dock .wrap{justify-content:center}}
+footer{background:var(--sunk);padding:26px 0 36px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer p{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo"><b>Лад</b><i>CRM під ваш процес</i></div>
+    <a class="btn sm" href="#demo">Отримати демо</a>
+  </div>
+</header>
+
+<!-- 01 ГЕРОЙ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Індивідуальна CRM-система для бізнесу</span>
+    <h1 style="margin-top:13px">CRM, яку налаштуємо <u>під ваш бізнес</u></h1>
+    <p class="lede">
+      Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти.
+      Ви показуєте, як працюєте зараз — ми налаштовуємо систему під цей процес.
+    </p>
+    <div class="btnrow">
+      <a class="btn" href="#demo">Показати, як це працюватиме у нас</a>
+      <a class="btn ghost" href="#vyglyad">Подивитися демо</a>
+    </div>
+
+    <dl class="specs">
+      <div><dt>Від $100</dt><dd>за запуск системи</dd></div>
+      <div><dt>30 днів</dt><dd>до готової системи</dd></div>
+      <div><dt>Ваш сервер</dt><dd>дані залишаються у вас</dd></div>
+      <div><dt>Місяць правок</dt><dd>після запуску, без доплат</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 02 ДЕМО -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Демо</span>
+    <h2 style="margin-top:13px">Так виглядає система зсередини</h2>
+    <p class="lede">Це екран робочої системи, а не макет. У вашій будуть ваші назви етапів,
+      ваші показники і тільки ті розділи, якими ви справді користуєтесь.</p>
+    <div class="shotwrap">
+      <img src="shots/dashboard.png" alt="Головний екран системи з показниками і задачами" width="3200" height="2000">
+    </div>
+    <div class="cta">
+      <a class="btn sm" href="#demo">Подивитися демо</a>
+      <span>Покажемо живу систему, а не презентацію.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ПРОБЛЕМА -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Навіщо це потрібно</span>
+    <h2 style="margin-top:13px">Коли інформація розкидана по таблицях і чатах,
+      керувати бізнесом стає складніше</h2>
+
+    <div class="qs">
+      <div><span class="n">01</span>Скільки заявок прийшло цього місяця?</div>
+      <div><span class="n">02</span>Які замовлення принесли прибуток?</div>
+      <div><span class="n">03</span>Хто зараз перевантажений, а де команда простоює?</div>
+    </div>
+    <p class="note">Якщо на це потрібно збирати інформацію з кількох чатів, таблиць
+      і телефонів — частину даних ви вже втрачаєте.</p>
+
+    <h3 style="margin-top:34px;font-size:clamp(19px,2.2vw,23px);font-weight:800">
+      Що починає губитися, коли бізнес росте</h3>
+    <div class="grid3">
+      <div><h3>Заявка загубилась</h3>
+        <p>Клієнт написав увечері, повідомлення залишилось у чаті, а менеджер побачив його
+          через два дні.</p></div>
+      <div><h3>Про клієнта згадали занадто пізно</h3>
+        <p>Після покупки ніхто не повернувся до нього з новою пропозицією.</p></div>
+      <div><h3>Інформація залишається у співробітника</h3>
+        <p>Контакти, домовленості та історія клієнта не повинні зберігатися тільки
+          в телефоні менеджера.</p></div>
+      <div><h3>Незрозуміло, скільки коштувало замовлення</h3>
+        <p>Години, переробки й витрати не зводяться разом, тому прибуток по кожному
+          замовленню лишається приблизним.</p></div>
+      <div><h3>Про зрив терміну дізнаються останніми</h3>
+        <p>Не з графіка й не від керівника, а від самого замовника, коли вже пізно
+          щось переграти.</p></div>
+      <div><h3>Щоб зрозуміти стан справ, потрібна нарада</h3>
+        <p>Керівник збирає картину вручну: обдзвонює людей, зводить таблиці, уточнює статуси.</p></div>
+    </div>
+
+    <div class="cta">
+      <a class="btn sm" href="#demo">Розібрати мій процес</a>
+      <span>Безкоштовна розмова на 30 хвилин.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ЩО БУДЕ В СИСТЕМІ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Склад системи</span>
+    <h2 style="margin-top:13px">Що ви будете бачити в системі щодня</h2>
+    <p class="lede">Вмикаємо тільки ті розділи, які закривають ваші процеси.
+      За те, чим ви не користуєтесь, платити не потрібно.</p>
+
+    <div class="grid3">
+      <div><h3>Заявки</h3><p>Звідки прийшов клієнт і на якому етапі він зараз.</p></div>
+      <div><h3>Замовлення і проєкти</h3><p>Терміни, бюджет, витрачений час і поточний статус.</p></div>
+      <div><h3>Команда</h3><p>Хто чим зайнятий і де є прострочення.</p></div>
+      <div><h3>Клієнти</h3><p>Історія роботи і ті, до кого час повернутися.</p></div>
+      <div><h3>Фінанси</h3><p>Скільки коштувало замовлення і скільки на ньому залишилось.</p></div>
+      <div><h3>Документи і сповіщення</h3><p>Рахунки й акти з ваших шаблонів, повідомлення
+        в Telegram команді та клієнту.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ЯК ВИГЛЯДАЄ -->
+<section id="vyglyad">
+  <div class="wrap">
+    <span class="eyebrow">Інтерфейс</span>
+    <h2 style="margin-top:13px">Не розповідаємо, як це виглядатиме, — показуємо</h2>
+
+    <p class="shotcap" style="margin-top:26px">Вся робота — на одному екрані</p>
+    <p>Замість обдзвону й зведення таблиць керівник відкриває одну сторінку
+      і бачить стан кожного замовлення.</p>
+    <div class="shotwrap">
+      <img src="shots/board.png" alt="Дошка замовлень за статусами" loading="lazy" width="3200" height="2000">
+      <span class="dot" style="left:36.8%;top:27%">1</span>
+      <span class="dot" style="left:23%;top:32.6%">2</span>
+      <span class="dot" style="left:20.5%;top:38.4%">3</span>
+      <span class="dot" style="left:33%;top:38.4%">4</span>
+    </div>
+    <div class="legend">
+      <div><b>1</b><span>Статус роботи</span></div>
+      <div><b>2</b><span>Заявка або замовлення</span></div>
+      <div><b>3</b><span>Термін виконання</span></div>
+      <div><b>4</b><span>Відповідальний</span></div>
+    </div>
+
+    <p class="shotcap">Власник бачить цифри без Excel-звітів</p>
+    <p>Скільки часу пішло на замовлення, який бюджет використано і хто скільки зробив —
+      рахується само, поки команда просто працює.</p>
+    <div class="shotwrap">
+      <img src="shots/reports.png" alt="Звіти: замовлення, час, бюджет" loading="lazy" width="3200" height="2000">
+    </div>
+    <p class="hint" style="margin-top:12px">На знімках — демонстраційні дані.</p>
+
+    <div class="cta">
+      <a class="btn sm" href="#demo">Показати, як це буде у нас</a>
+      <span>Відповімо протягом доби.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ЯК ВПРОВАДЖУЄМО -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Впровадження</span>
+    <h2 style="margin-top:13px">Як ми запускаємо систему за 30 днів</h2>
+
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>Розбираємо ваш процес</h3></div>
+        <p>Спілкуємось і дивимось, як зараз проходять заявки, замовлення й робота команди.</p></div>
+      <div class="step"><div class="n">02</div><div><h3>Збираємо першу версію</h3></div>
+        <p>Налаштовуємо систему, ролі, статуси й задачі та переносимо потрібні дані.</p></div>
+      <div class="step"><div class="n">03</div><div><h3>Ви починаєте працювати</h3></div>
+        <p>Команда заходить у систему і користується нею в реальній роботі.</p></div>
+      <div class="step"><div class="n">04</div><div><h3>Доробляємо</h3></div>
+        <p>Перший місяць збираємо зауваження і безкоштовно виправляємо те, що виявилось незручним.</p></div>
+    </div>
+    <p class="result">Результат через 30 днів — не макет і не демо. Ви вже працюєте у своїй системі.</p>
+
+    <div class="cta">
+      <a class="btn sm" href="#demo">Розібрати мій процес</a>
+      <span>Перший крок можна почати вже наступного тижня.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 БЕЗПЕКА -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Дані та доступи</span>
+    <h2 style="margin-top:13px">Ваші дані залишаються у вас</h2>
+    <p class="lede">Система працює на сервері, який оформлений на вас. Ви самі контролюєте
+      доступ до даних, резервні копії та доступ нашої команди.</p>
+
+    <div class="grid3">
+      <div><h3>Ваш сервер</h3><p>Дані не зберігаються в нашій спільній базі з іншими компаніями.</p></div>
+      <div><h3>Ролі та доступи</h3><p>Кожен співробітник бачить тільки те, що потрібно для роботи.</p></div>
+      <div><h3>Історія дій</h3><p>Видно, хто і коли працював із даними.</p></div>
+      <div><h3>Експорт</h3><p>Ви можете забрати свої дані без нашого дозволу, у відкритому форматі.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ОЦІНКА ЧАСУ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Орієнтир</span>
+    <h2 style="margin-top:13px">Оцініть вартість ручної роботи</h2>
+    <p class="lede">Прикиньте, скільки часу команда витрачає на пошук інформації,
+      уточнення статусів і повторну роботу.</p>
+
+    <div class="calc">
+      <div class="fields">
+        <div class="f"><label for="ppl">Людей у команді</label>
+          <div class="r"><input type="range" id="ppl" min="5" max="80" step="1" value="12"><span class="v" id="ppl-v">12</span></div></div>
+        <div class="f"><label for="rate">Середня вартість години роботи, ₴</label>
+          <div class="r"><input type="range" id="rate" min="100" max="1200" step="25" value="250"><span class="v" id="rate-v">250</span></div></div>
+        <div class="f"><label for="hrs">Годин на тиждень на пошук і уточнення</label>
+          <div class="r"><input type="range" id="hrs" min="0.5" max="10" step="0.5" value="3"><span class="v" id="hrs-v">3,0</span></div></div>
+      </div>
+      <div class="readout">
+        <span class="eyebrow">Орієнтовна вартість часу за рік</span>
+        <p class="big" id="loss">432 000 ₴</p>
+        <div class="cmp"><span>Система за перший рік</span><span id="cost">30 800 ₴</span></div>
+      </div>
+    </div>
+    <p class="hint" style="margin-top:16px">Розрахунок показує вартість часу, який команда витрачає
+      на пошук інформації, перевірку статусів та повторну роботу. Це не прогноз ваших фактичних втрат.<br>
+      Перший рік = $100 за запуск + десять місяців підписки. Курс 44 ₴/$.</p>
+  </div>
+</section>
+
+<!-- 09 ЦІНА -->
+<section id="tsina">
+  <div class="wrap">
+    <span class="eyebrow">Вартість</span>
+    <h2 style="margin-top:13px">Скільки коштує система</h2>
+
+    <div class="flow">
+      <div><p class="mo">Старт</p><p class="amt">$100</p>
+        <p>Одноразовий платіж за запуск.</p></div>
+      <div><p class="mo">Місяць 1</p><p class="amt">Збірка</p>
+        <p>Розбір процесу, налаштування, перенесення даних, навчання команди.</p></div>
+      <div><p class="mo">Місяць 2</p><p class="amt">Правки</p>
+        <p>Виправляємо те, що виявилось незручним у реальній роботі. Без доплат.</p></div>
+      <div><p class="mo">З місяця 3</p><p class="amt sub">від $60</p>
+        <p>Щомісячна підписка: оновлення, резервні копії, підтримка.</p></div>
+    </div>
+
+    <div class="tariffs">
+      <div><p class="p">$60 / місяць</p><p class="u">до 15 користувачів</p></div>
+      <div><p class="p">$80 / місяць</p><p class="u">до 40 користувачів</p></div>
+      <div><p class="p">від $120 / місяць</p><p class="u">для команд понад 40 людей</p></div>
+    </div>
+    <p class="hint" style="margin-top:14px">Сервер оплачується окремо — орієнтовно 300–550 ₴/міс, напряму провайдеру.</p>
+
+    <p class="included"><b>У підписку входить:</b> оновлення системи, резервні копії, підтримка
+      і дрібні доробки. Рахуються тільки співробітники, які заходять у систему — ваші клієнти
+      й підрядники доступ отримують безкоштовно.</p>
+
+    <div class="guarantee">
+      <h3>Не запустили за 30 днів — повернемо $100</h3>
+      <p>Якщо через 30 днів система не запущена і команда не може нею користуватися,
+        повертаємо стартовий платіж.</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn sm" href="#demo">Отримати демо під свій бізнес</a>
+      <span>За розмову і демо платити не потрібно.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 10 КОМУ ПІДХОДИТЬ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Чесно</span>
+    <h2 style="margin-top:13px">Кому система підходить, а кому — ні</h2>
+    <div class="fit">
+      <div>
+        <h3>Підходить</h3>
+        <ul>
+          <li>Команда від 5 людей</li>
+          <li>Кілька замовлень або проєктів одночасно</li>
+          <li>Повторювані процеси: заявка → робота → здача → оплата</li>
+          <li>Робота зараз ведеться в таблицях, чатах або застарілій системі</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Не потрібна</h3>
+        <ul>
+          <li><b>1–2 людини</b> — вам, скоріш за все, вистачить таблиці</li>
+          <li><b>Склад і маркетплейси</b> — для цього краще спеціалізована система</li>
+          <li><b>Фіскалізація і каса</b> — тут потрібні окремі рішення</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 FAQ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Питання</span>
+    <h2 style="margin-top:13px">Часті питання</h2>
+    <div class="faq">
+      <details open><summary>Чому $100, коли студії просять від $3 000?</summary>
+        <div class="ans">Ми не пишемо систему з нуля. Базові модулі вже зібрані — ми додаємо
+          вашу специфіку. І заробляємо на підписці, а не на одному великому чеку.</div></details>
+      <details><summary>А ми не зберемо таке саме самі за допомогою ШІ?</summary>
+        <div class="ans">Прототип — так. Робоча система потребує ще налаштування прав доступу,
+          резервних копій, перенесення даних, інтеграцій і подальшої підтримки.
+          Ми беремо цю частину на себе.</div></details>
+      <details><summary>У нас усе в Excel і чатах. Скільки займе перенесення?</summary>
+        <div class="ans">Другий тиждень із чотирьох. Переносимо клієнтів, поточні замовлення,
+          виконавців і терміни. Excel можна вести паралельно перші два тижні.</div></details>
+      <details><summary>Що буде, якщо ми припинимо платити?</summary>
+        <div class="ans">Сервер і дані ваші. Ви втрачаєте оновлення, підтримку й доробки —
+          не доступ до власної інформації.</div></details>
+      <details><summary>Команда не захоче користуватися новою системою</summary>
+        <div class="ans">Виконавцю потрібні дві дії: взяти роботу і здати її. Решту
+          заповнює керівник або система. Якщо від людини вимагати п'ять полів, вона не заповнить жодного.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ФОРМА -->
+<section class="formsec" id="demo">
+  <div class="wrap">
+    <span class="eyebrow">Демо</span>
+    <h2 style="margin-top:13px">Покажемо, як CRM може виглядати у вашому бізнесі</h2>
+    <p class="lede">Залиште імʼя та Telegram. Повернемось протягом доби.</p>
+
+    <form id="form1">
+      <div><label for="f-name">Ім'я</label>
+        <input type="text" id="f-name" placeholder="Як до вас звертатись" required></div>
+      <div><label for="f-contact">Telegram або телефон</label>
+        <input type="text" id="f-contact" placeholder="@nickname або +380" required></div>
+      <div class="full"><button class="btn" type="submit">Отримати демо</button></div>
+    </form>
+
+    <div class="got" id="got" hidden>
+      <h3>Заявку прийнято</h3>
+      <p id="got-text"></p>
+    </div>
+
+    <div class="optional" id="optional" hidden>
+      <span class="eyebrow">Необовʼязково</span>
+      <p class="sub">Якщо відповісте на три питання, демо буде точнішим.
+        Можна пропустити — ми все одно повернемось.</p>
+      <form id="form2">
+        <div><label for="f-ind">Сфера бізнесу</label>
+          <input type="text" id="f-ind" placeholder="Напишіть своїми словами"></div>
+        <div><label for="f-size">Скільки людей працюватиме в системі</label>
+          <select id="f-size"><option value="">Оберіть</option>
+            <option>1–4</option><option>5–15</option><option>15–40</option>
+            <option>40–100</option><option>Більше 100</option></select></div>
+        <div class="full"><label for="f-now">У чому ведете роботу зараз</label>
+          <select id="f-now"><option value="">Оберіть</option>
+            <option>Excel, Google Таблиці, чати, папір</option>
+            <option>Трелло, Ноушн, таск-менеджер</option>
+            <option>Залишки Бітрікс24</option>
+            <option>Інша CRM</option></select></div>
+        <div class="full"><button class="btn" type="submit">Надіслати</button></div>
+      </form>
+    </div>
+
+    <div class="done" id="done" hidden>
+      <h3>Дякуємо</h3><p id="done-text"></p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>Лад · CRM під ваш процес</p>
+  <p>Україна · дані на сервері замовника</p>
+</div></footer>
+
+<div class="dock"><div class="wrap">
+  <p>Демо живої системи і розбір процесу — безкоштовно</p>
+  <a class="btn sm" href="#demo">Отримати демо під свій бізнес</a>
+</div></div>
+
+<script>
+(function(){
+var ppl=document.getElementById('ppl'),rate=document.getElementById('rate'),hrs=document.getElementById('hrs');
+function fmt(n){ return Math.round(n).toLocaleString('uk-UA').replace(/ /g,' ')+' ₴'; }
+function calc(){
+  var p=+ppl.value,r=+rate.value,h=+hrs.value;
+  document.getElementById('ppl-v').textContent=p;
+  document.getElementById('rate-v').textContent=r;
+  document.getElementById('hrs-v').textContent=h.toFixed(1).replace('.',',');
+  var sub = p<=15?60 : (p<=40?80 : 120+(p-40)*2);
+  document.getElementById('loss').textContent=fmt(p*h*48*r);
+  document.getElementById('cost').textContent=fmt((sub*10+100)*44);
+}
+[ppl,rate,hrs].forEach(function(e){ e.addEventListener('input',calc); });
+calc();
+
+document.getElementById('form1').addEventListener('submit',function(e){
+  e.preventDefault();
+  var nm=document.getElementById('f-name').value;
+  document.getElementById('got-text').textContent =
+    nm+', ми отримали заявку і повернемось протягом доби. '+
+    '(Макет: форму ще не підключено до пошти й Telegram.)';
+  document.getElementById('got').hidden=false;
+  this.hidden=true;
+  document.getElementById('optional').hidden=false;
+  document.getElementById('got').scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+document.getElementById('form2').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('done-text').textContent =
+    'Деталі отримали — підготуємо демо під ваші процеси. '+
+    '(Макет: форму ще не підключено до пошти й Telegram.)';
+  document.getElementById('optional').hidden=true;
+  document.getElementById('done').hidden=false;
+  document.getElementById('done').scrollIntoView({behavior:'smooth',block:'center'});
+});
+})();
+</script>
+</body>
+</html>
