@@ -162,7 +162,7 @@ nav a:hover{color:#fff}
 .tab:hover{border-color:var(--ink-3)}
 .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-  display:grid;grid-template-columns:.82fr 1.18fr}
+  display:grid;grid-template-columns:.72fr 1.28fr;align-items:stretch}
 @media(max-width:900px){.feat{grid-template-columns:1fr}}
 .feat-l{padding:26px 24px;border-right:1px solid var(--line)}
 @media(max-width:900px){.feat-l{border-right:0;border-bottom:1px solid var(--line)}}
@@ -172,6 +172,22 @@ nav a:hover{color:#fff}
 .feat-l li svg{flex:none;color:var(--green);margin-top:3px}
 .feat-r{padding:0;background:var(--bg-2);display:flex;align-items:center}
 .feat-r img{border-radius:0}
+
+/* темний варіант блоку можливостей */
+.dark .tab{background:var(--dark-2);border-color:var(--dark-line);color:var(--on-dark-2)}
+.dark .tab:hover{border-color:var(--on-dark-2);color:var(--on-dark)}
+.dark .tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.dark .feat{background:var(--dark-2);border-color:var(--dark-line)}
+.dark .feat-l{border-right-color:var(--dark-line)}
+@media(max-width:900px){.dark .feat-l{border-bottom-color:var(--dark-line)}}
+.dark .feat-l h3{color:#fff}
+.dark .feat-l li{color:var(--on-dark-2)}
+.dark .feat-l li svg{color:var(--green-b)}
+.dark .feat-r{background:var(--dark-3)}
+.feat-r{padding:18px}
+.feat-r img{width:100%;height:auto;max-height:100%;object-fit:contain;
+  border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .22s ease}
+.feat-r img.swap{opacity:0}
 
 /* кроки */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
@@ -300,9 +316,10 @@ details[open] summary::after{content:"–"}
 .consent.err{color:#C0392B}
 .consent.err input{outline:2px solid #C0392B;outline-offset:2px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.consent{display:flex;gap:10px;align-items:flex-start;margin:2px 0 16px;font-size:12.5px;
-  color:var(--ink-2);line-height:1.5;cursor:pointer}
-.consent input{width:16px;height:16px;flex:none;margin:2px 0 0;accent-color:var(--green);padding:0}
+.formcard label.consent{display:flex;gap:9px;align-items:flex-start;margin:2px 0 16px;font-size:12px;
+  font-weight:400;text-transform:none;letter-spacing:0;
+  color:var(--ink-3);line-height:1.45;cursor:pointer}
+.consent input{width:13px;height:13px;flex:none;margin:2px 0 0;accent-color:var(--green);padding:0}
 .consent a{color:var(--green-d);text-decoration:underline;text-underline-offset:2px}
 .formcard input[aria-invalid="true"]{border-color:#C0392B}
 
@@ -423,13 +440,13 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
 </section>
 
 <!-- МОЖЛИВОСТІ -->
-<section id="mozhlyvosti">
+<section class="dark" id="mozhlyvosti">
   <div class="wrap">
     <div class="tabs" id="tabs" role="tablist"></div>
     <div class="split">
       <div>
         <span class="eyebrow">Можливості</span>
-        <h2 style="margin-top:14px">Що ви будете бачити в системі щодня</h2>
+        <h2 style="margin-top:14px;color:#fff">Що ви будете бачити в системі щодня</h2>
         <p class="lede">Уся ключова інформація про клієнтів, проекти, команду та фінанси
           в одному місці. Вмикаємо тільки те, що потрібно саме вам.</p>
         <div style="margin-top:26px"><a class="btn" href="#demo">Розібрати мій процес <span class="ar">→</span></a></div>
@@ -440,7 +457,7 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
           <ul id="f-list"></ul>
         </div>
         <div class="feat-r">
-          <img src="shots/dashboard.png" alt="Робочий екран системи" loading="lazy" width="3200" height="2000">
+          <img id="f-shot" src="shots/tab-zayavky.jpg" alt="Екран «Заявки» у системі" width="1586" height="992">
         </div>
       </div>
     </div>
@@ -670,7 +687,7 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
           <em>Вкажіть телефон або Telegram — інакше нам нічим відповісти</em></div>
         <p class="ferr" id="ferr" hidden></p>
         <label class="consent" for="f-agree">
-          <input type="checkbox" id="f-agree" name="agree">
+          <input type="checkbox" id="f-agree" name="agree" checked>
           <span>Даю згоду на обробку моїх контактних даних для відповіді на заявку —
             <a href="privacy.html" target="_blank" rel="noopener">політика конфіденційності</a>.</span>
         </label>
@@ -699,20 +716,22 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
 <script>
 (function(){
 var TABS=[
- {k:"Заявки",t:"Заявки з усіх каналів в одному місці",
+ {k:"Заявки",img:"shots/tab-zayavky.jpg",t:"Заявки з усіх каналів в одному місці",
   l:["Всі звернення з сайту, соцмереж і месенджерів","Канбан по етапах","Відповідальний і дедлайн","Джерело заявки","Коментарі та файли"]},
- {k:"Проекти",t:"Проекти та замовлення з термінами",
+ {k:"Проекти",img:"shots/tab-proekty.jpg",t:"Проекти та замовлення з термінами",
   l:["Етапи з вашими назвами","Графік робіт із залежностями","Бюджет і фактичні витрати","Файли й погодження документів","Історія змін"]},
- {k:"Команда",t:"Хто чим зайнятий прямо зараз",
+ {k:"Команда",img:"shots/tab-komanda.jpg",t:"Хто чим зайнятий прямо зараз",
   l:["Завантаженість у відсотках від норми","Прострочення підсвічуються","Ролі та права доступу","Облік витраченого часу","Робота з телефону"]},
- {k:"Клієнти",t:"База клієнтів, яка лишається компанії",
+ {k:"Клієнти",img:"shots/tab-kliienty.jpg",t:"База клієнтів, яка лишається компанії",
   l:["Історія звернень і замовлень","Контакти та домовленості","Клієнти, до яких час повернутися","Сегменти для розсилок","Доступ за ролями"]},
- {k:"Гроші",t:"Скільки коштувало замовлення",
+ {k:"Гроші",img:"shots/tab-hroshi.jpg",t:"Скільки коштувало замовлення",
   l:["План проти факту по кожному замовленню","Години і ставки","Витрати і маржа","Контроль оплат","Фінанси приховані за замовчуванням"]},
- {k:"Звіти",t:"Цифри без Excel-звітів",
+ {k:"Звіти",img:"shots/tab-zvity.jpg",t:"Цифри без Excel-звітів",
   l:["Звідки приходять клієнти","Результат кожного в команді","Завантаження по місяцях","Вивантаження в Excel","Дашборд власника"]}
 ];
-var tabs=document.getElementById('tabs'), title=document.getElementById('f-title'), list=document.getElementById('f-list');
+var tabs=document.getElementById('tabs'), title=document.getElementById('f-title'),
+    list=document.getElementById('f-list'), shot=document.getElementById('f-shot');
+TABS.forEach(function(x){ var im=new Image(); im.src=x.img; });   // прогріваємо кеш
 TABS.forEach(function(x,i){
   var b=document.createElement('button');
   b.type='button'; b.className='tab'; b.textContent=x.k; b.setAttribute('role','tab');
@@ -723,6 +742,14 @@ TABS.forEach(function(x,i){
 function pick(i){
   [].forEach.call(tabs.children,function(c,k){ c.setAttribute('aria-selected',k===i?'true':'false'); });
   title.textContent=TABS[i].t;
+  if(shot.getAttribute('src')!==TABS[i].img){
+    shot.classList.add('swap');
+    setTimeout(function(){
+      shot.src=TABS[i].img;
+      shot.alt='Екран «'+TABS[i].k+'» у системі';
+      shot.classList.remove('swap');
+    }, 180);
+  }
   list.innerHTML='';
   TABS[i].l.forEach(function(t){
     var li=document.createElement('li');
