@@ -90,10 +90,8 @@ nav a:hover{color:#fff}
 .hero{position:relative;overflow:hidden;background:var(--dark);border-top:0;padding:0;
   height:clamp(660px,88vh,880px);display:flex;align-items:center}
 .hero-media{position:absolute;inset:0;overflow:hidden}
-.hero-frame{position:absolute;top:-11%;right:-4%;height:122%;aspect-ratio:1672/941}
+.hero-frame{position:absolute;top:-5%;right:0;height:110%;aspect-ratio:1672/941}
 .hero-frame .photo{width:100%;height:100%;object-fit:cover;object-position:center}
-.laptop-screen{position:absolute;left:53.17%;top:26.04%;width:37.80%;height:40.91%;
-  object-fit:cover;object-position:top left;background:#fff;border-radius:2px}
 .hero-scrim{position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(96deg, rgba(16,21,17,.97) 0%, rgba(16,21,17,.93) 24%,
     rgba(16,21,17,.62) 41%, rgba(16,21,17,.14) 56%, rgba(16,21,17,0) 67%)}
@@ -101,15 +99,15 @@ nav a:hover{color:#fff}
 .hero h1{color:#fff;max-width:14ch;margin-top:16px}
 .hero .lede{max-width:43ch;color:#fff;opacity:.94}
 .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center}
-.float{position:absolute;left:72%;top:69%;background:#fff;border-radius:13px;
+.float{position:absolute;left:73%;top:72%;background:#fff;border-radius:13px;
   padding:12px 15px;display:flex;align-items:center;gap:11px;z-index:3;
   box-shadow:0 16px 38px rgba(0,0,0,.4);min-width:186px}
 .float .ico{width:34px;height:34px;border-radius:9px;background:var(--green-soft);
   display:flex;align-items:center;justify-content:center;color:var(--green);flex:none}
 .float b{display:block;font-family:var(--f-d);font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.2}
 .float span{font-size:12.5px;color:var(--ink-3)}
-.float.f2{left:47.5%;top:23%;min-width:0;padding:10px 14px}
-.float.f3{left:45%;top:73%;min-width:0;padding:10px 14px}
+.float.f2{left:40%;top:17%;min-width:0;padding:10px 14px}
+.float.f3{left:42%;top:76%;min-width:0;padding:10px 14px}
 .float .up{color:var(--green);font-weight:800;font-family:var(--f-d);font-size:15px}
 .float.warn .ico{background:#FDF0E3;color:#B4761F}
 @media(max-width:1200px){.float.f2,.float.f3{display:none}}
@@ -117,7 +115,7 @@ nav a:hover{color:#fff}
   .hero{height:auto;padding:52px 0 48px}
   .hero-frame{position:absolute;inset:0;top:0;right:0;height:100%;width:100%;aspect-ratio:auto}
   .hero-frame .photo{object-position:72% center}
-  .laptop-screen,.float{display:none}
+  .float{display:none}
   .hero-scrim{background:linear-gradient(180deg, rgba(16,21,17,.9), rgba(16,21,17,.94))}
   .hero h1{max-width:none}
 }
@@ -238,12 +236,7 @@ nav a:hover{color:#fff}
 
 
 /* фото зелені збоку блоку «кому підійде» */
-.split3{display:grid;grid-template-columns:.8fr 1.3fr 196px;gap:36px;align-items:stretch}
-.sidephoto{border-radius:var(--r);overflow:hidden;align-self:stretch;min-height:260px}
-.split3>div:first-child{align-self:start}
-.sidephoto img{width:100%;height:100%;object-fit:cover}
-@media(max-width:1140px){.split3{grid-template-columns:.85fr 1.25fr}.sidephoto{display:none}}
-@media(max-width:980px){.split3{grid-template-columns:1fr;gap:30px}}
+@media(max-width:980px){}
 
 /* гарантія + faq */
 .gwrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:center}
@@ -338,8 +331,7 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
 <section class="hero" id="top">
   <div class="hero-media">
     <div class="hero-frame">
-      <img class="photo" src="shots/hero-full.jpg" alt="" width="1672" height="941">
-      <img class="laptop-screen" src="shots/dashboard.png" alt="Дашборд керівника у системі LAD" width="3200" height="2000">
+      <img class="photo" src="shots/hero-lad.jpg" alt="Дашборд LAD на ноутбуці" width="1672" height="941">
       <div class="float">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
         <span><b>Нова заявка</b><span>Вебсайт · 12:24</span></span>
@@ -572,7 +564,7 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
 
 <!-- КОМУ ПІДІЙДЕ -->
 <section style="background:var(--bg-2)">
-  <div class="wrap split3">
+  <div class="wrap split">
     <div>
       <span class="eyebrow">Кому підійде</span>
       <h2 style="margin-top:14px">Це рішення для команд, які хочуть порядок у процесах</h2>
@@ -601,7 +593,6 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
         </ul>
       </div>
     </div>
-    <div class="sidephoto"><img src="shots/green.jpg" alt="" loading="lazy" width="900" height="1200"></div>
   </div>
 </section>
 
