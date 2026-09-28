@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBPGKSQXL2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MBPGKSQXL2');
+</script>
 <title>LAD — розробимо CRM з нуля під ваш бізнес</title>
 <meta name="description" content="Зберемо в одній системі клієнтів, заявки, задачі, замовлення, команду та звіти. Розробка з нуля під ваш процес, запуск за 30 днів. Дані на вашому сервері.">
 <meta name="theme-color" content="#101511">
@@ -297,9 +305,6 @@ details[open] summary::after{content:"–"}
 .consent input{width:16px;height:16px;flex:none;margin:2px 0 0;accent-color:var(--green);padding:0}
 .consent a{color:var(--green-d);text-decoration:underline;text-underline-offset:2px}
 .formcard input[aria-invalid="true"]{border-color:#C0392B}
-.ok{background:var(--green-soft);border:1px solid #CFE3D6;border-radius:var(--r-sm);
-  padding:16px 18px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
-.ok b{color:var(--green-d);font-family:var(--f-d);display:block;margin-bottom:4px}
 
 footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:30px 0 36px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -672,7 +677,6 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
         <button class="btn" type="submit">Записатися на показ <span class="ar">→</span></button>
         <p class="sm">Відповідаємо протягом доби. За показ і розмову платити не потрібно.</p>
       </form>
-      <div class="ok" id="ok" hidden></div>
     </div>
   </div>
 </section>
@@ -680,11 +684,11 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
 <footer><div class="wrap">
   <div>
     <p>LAD · Системи управління бізнесом</p>
-    <p><span class="todo">вкажіть ФОП/ТОВ і код</span></p>
+    <p>ФОП Сурова Олеся Сергіївна · РНОКПП 3159621806</p>
   </div>
   <div>
-    <p>Пошта: <span class="todo">вкажіть e-mail</span></p>
-    <p>Telegram: <span class="todo">вкажіть @нікнейм</span></p>
+    <p>Пошта: <a href="mailto:alesya_04.07@ukr.net">alesya_04.07@ukr.net</a></p>
+    <p>Телефон: <a href="tel:+380978553353">+380 97 855 33 53</a></p>
   </div>
   <div>
     <p>Україна · дані на сервері замовника</p>
@@ -728,6 +732,9 @@ function pick(i){
   });
 }
 pick(0);
+
+// ---- куди відправляється заявка (Apps Script / бекенд). Порожньо = тільки редірект ----
+var LEAD_ENDPOINT = '';
 
 // ---- український номер: у полі лише 9 цифр абонента, префікс +380 статичний ----
 function uaDigits(v){
@@ -804,13 +811,27 @@ lf.addEventListener('submit',function(e){
 
   err.hidden=true;
   phFull.value = phOK || '';
-  var lead={name:nm, phone:phFull.value, telegram:normTG(tgRaw),
-            page:location.href, ts:new Date().toISOString()};
-  var okBox=document.getElementById('ok');
-  okBox.innerHTML='<b>Заявку прийнято</b>'+nm+', ми повернемось протягом доби. '+
-    '(Макет: форму ще не підключено до пошти й Telegram.)';
-  okBox.hidden=false;
-  lf.hidden=true;
+  var lead = {name:nm, phone:phFull.value, telegram:normTG(tgRaw),
+              page:location.href, ref:document.referrer,
+              ts:new Date().toISOString()};
+
+  var btn=lf.querySelector('button[type=submit]');
+  btn.disabled=true; btn.textContent='Надсилаємо…';
+
+  var sent=false;
+  function done(){ if(sent) return; sent=true; location.href='thanks.html'; }
+
+  if(typeof gtag==='function') gtag('event','generate_lead',{form:'demo'});
+  if(typeof fbq==='function') fbq('track','Lead');
+
+  if(LEAD_ENDPOINT){
+    fetch(LEAD_ENDPOINT, {method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(lead)}).then(done, done);
+    setTimeout(done, 6000);           // не тримаємо людину, якщо бекенд мовчить
+  } else {
+    setTimeout(done, 150);
+  }
 });
 
 // тінь під шапкою, коли сторінку прокрутили
