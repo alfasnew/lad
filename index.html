@@ -272,6 +272,20 @@ details[open] summary::after{content:"–"}
 .formcard .btn{width:100%;justify-content:center;font-size:15.5px;padding:14px}
 .formcard .sm{font-size:12.5px;color:var(--ink-3);margin-top:12px;text-align:center}
 .formcard .ferr{font-size:13px;color:#C0392B;margin:-6px 0 14px;line-height:1.4}
+.formcard .fph{display:flex;align-items:stretch;border:1px solid var(--line);
+  border-radius:var(--r-sm);background:var(--bg);overflow:hidden;transition:border-color .16s}
+.formcard .fph span{display:flex;align-items:center;padding:0 11px 0 14px;font-size:15px;
+  font-weight:600;color:var(--ink-3);background:#EBE7DF;border-right:1px solid var(--line)}
+.formcard .fph input{border:0;border-radius:0;flex:1;min-width:0;background:transparent}
+.formcard .fph input:focus{border:0}
+.formcard .fph:focus-within{border-color:var(--green)}
+.formcard .fld em{display:none;font-style:normal;font-size:12px;color:#C0392B;margin-top:6px;line-height:1.45}
+.formcard .fld.err em{display:block}
+.formcard .fld.err input,.formcard .fld.err .fph{border-color:#C0392B;background:#FFF6F4}
+.formcard .fld.err .fph input{background:transparent}
+.consent.err{color:#C0392B}
+.consent.err input{outline:2px solid #C0392B;outline-offset:2px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .consent{display:flex;gap:10px;align-items:flex-start;margin:2px 0 16px;font-size:12.5px;
   color:var(--ink-2);line-height:1.5;cursor:pointer}
 .consent input{width:16px;height:16px;flex:none;margin:2px 0 0;accent-color:var(--green);padding:0}
@@ -621,15 +635,23 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
     </div>
     <div class="formcard">
       <form id="lead">
+        <div class="hp" aria-hidden="true"><label>Не заповнюйте це поле<input type="text"
+          name="company_url" tabindex="-1" autocomplete="off"></label></div>
+
         <div class="fld"><label for="f-name">Ім'я</label>
           <input type="text" id="f-name" name="name" autocomplete="name"
-                 placeholder="Як до вас звертатись" required></div>
+                 placeholder="Як до вас звертатись" required minlength="2">
+          <em>Вкажіть ім'я — мінімум 2 символи</em></div>
         <div class="fld"><label for="f-phone">Телефон</label>
-          <input type="tel" id="f-phone" name="phone" autocomplete="tel"
-                 inputmode="tel" placeholder="+380 __ ___ __ __"></div>
+          <div class="fph"><span>+380</span>
+            <input type="tel" id="f-phone" autocomplete="tel" inputmode="numeric"
+                   maxlength="12" placeholder="97 123 45 67"></div>
+          <input type="hidden" name="phone" id="f-phone-full">
+          <em>Вкажіть український номер: 9 цифр після +380</em></div>
         <div class="fld"><label for="f-tg">Telegram</label>
-          <input type="text" id="f-tg" name="telegram" placeholder="@nickname"></div>
-        <p class="ferr" id="ferr" hidden>Вкажіть телефон або Telegram — інакше нам нічим відповісти.</p>
+          <input type="text" id="f-tg" name="telegram" placeholder="@nickname">
+          <em>Вкажіть телефон або Telegram — інакше нам нічим відповісти</em></div>
+        <p class="ferr" id="ferr" hidden></p>
         <label class="consent" for="f-agree">
           <input type="checkbox" id="f-agree" name="agree">
           <span>Даю згоду на обробку моїх контактних даних для відповіді на заявку —
@@ -695,20 +717,25 @@ function pick(i){
 }
 pick(0);
 
-// нормалізація українського номера -> 380XXXXXXXXX або null
-function normUA(raw){
-  var d=(raw||'').replace(/\D/g,'');
-  if(d.length===12 && d.indexOf('380')===0) d=d;
-  else if(d.length===11 && d.indexOf('38')===0) return null;   // 38 + 9 цифр — неповний
-  else if(d.length===10 && d.charAt(0)==='0') d='38'+d;
-  else if(d.length===9) d='380'+d;
-  else return null;
-  if(d.length!==12 || d.indexOf('380')!==0) return null;
-  if(!/[3-9]/.test(d.charAt(3))) return null;                  // код оператора/міста
-  return d;
+// ---- український номер: у полі лише 9 цифр абонента, префікс +380 статичний ----
+function uaDigits(v){
+  var d=String(v||'').replace(/[^0-9]/g,'');
+  while(d.length>9 && d.indexOf('380')===0) d=d.slice(3);   // вставили повний номер
+  if(d.length===10 && d.charAt(0)==='0') d=d.slice(1);      // вставили 0XX...
+  return d.slice(0,9);
 }
-function fmtUA(d){
-  return '+'+d.slice(0,3)+' '+d.slice(3,5)+' '+d.slice(5,8)+' '+d.slice(8,10)+' '+d.slice(10,12);
+function uaFmt(d){
+  if(!d) return '';
+  var out=d.slice(0,2);
+  if(d.length>2) out+=' '+d.slice(2,5);
+  if(d.length>5) out+=' '+d.slice(5,7);
+  if(d.length>7) out+=' '+d.slice(7,9);
+  return out;
+}
+function uaFull(v){
+  var d=uaDigits(v);
+  if(!/^[3-9][0-9]{8}$/.test(d)) return null;               // код оператора чи міста: 3x-9x
+  return '+380 '+d.slice(0,2)+' '+d.slice(2,5)+' '+d.slice(5,7)+' '+d.slice(7,9);
 }
 function normTG(raw){
   var v=(raw||'').trim();
@@ -717,34 +744,61 @@ function normTG(raw){
   return v?'@'+v:'';
 }
 
-var phEl=document.getElementById('f-phone'), tgEl=document.getElementById('f-tg');
-phEl.addEventListener('blur',function(){ var d=normUA(this.value); if(d) this.value=fmtUA(d); });
-tgEl.addEventListener('blur',function(){ var v=normTG(this.value); if(v) this.value=v; });
+var lf=document.getElementById('lead');
+var nmEl=document.getElementById('f-name'), phEl=document.getElementById('f-phone'),
+    phFull=document.getElementById('f-phone-full'), tgEl=document.getElementById('f-tg'),
+    agEl=document.getElementById('f-agree'), err=document.getElementById('ferr'),
+    hpEl=lf.querySelector('[name=company_url]'), t0=Date.now();
 
-document.getElementById('lead').addEventListener('submit',function(e){
+function mark(el,on){ var f=el.closest('.fld')||el.closest('.consent'); if(f) f.classList.toggle('err',on); return !on; }
+
+// підказка зникає, щойно людина почала виправляти
+lf.addEventListener('input',function(e){
+  var f=e.target.closest('.fld'); if(f) f.classList.remove('err');
+  err.hidden=true;
+});
+agEl.addEventListener('change',function(){ agEl.closest('.consent').classList.remove('err'); err.hidden=true; });
+
+// форматування під час набору: 97 123 45 67
+phEl.addEventListener('input',function(){
+  var atEnd = phEl.selectionStart===phEl.value.length;
+  var m = uaFmt(uaDigits(phEl.value));
+  if(m!==phEl.value){ phEl.value=m; if(atEnd) phEl.setSelectionRange(m.length,m.length); }
+  phFull.value = uaFull(phEl.value) || '';
+});
+phEl.addEventListener('blur',function(){ phFull.value = uaFull(phEl.value) || ''; });
+tgEl.addEventListener('blur',function(){ var v=normTG(tgEl.value); if(v) tgEl.value=v; });
+
+lf.addEventListener('submit',function(e){
   e.preventDefault();
-  var nm=document.getElementById('f-name').value.trim();
-  var ag=document.getElementById('f-agree');
-  var err=document.getElementById('ferr');
-  var phRaw=phEl.value.trim(), tgRaw=tgEl.value.trim();
-  var phOK=phRaw?normUA(phRaw):null;
-  var msg='';
+  if(hpEl && hpEl.value) return;                            // пастка для ботів
+  var nm=nmEl.value.trim(), phRaw=phEl.value.trim(), tgRaw=tgEl.value.trim();
+  var phOK=phRaw?uaFull(phRaw):null, ok=true;
 
-  if(!phRaw && !tgRaw) msg='Вкажіть телефон або Telegram — інакше нам нічим відповісти.';
-  else if(phRaw && !phOK) msg='Перевірте номер телефону. Формат: +380 XX XXX XX XX';
-  else if(!ag.checked) msg='Щоб ми могли відповісти, потрібна згода на обробку контактних даних.';
+  ok = mark(nmEl, nm.length<2) && ok;
+  ok = mark(phEl, phRaw!=='' && !phOK) && ok;               // номер введено, але неповний
+  ok = mark(tgEl, phRaw==='' && tgRaw==='') && ok;          // жодного контакту
+  if(phRaw==='' && tgRaw==='') mark(phEl,true);
+  ok = mark(agEl, !agEl.checked) && ok;
 
-  phEl.setAttribute('aria-invalid', (msg && (!phRaw&&!tgRaw || phRaw&&!phOK))?'true':'false');
-  tgEl.setAttribute('aria-invalid', (msg && !phRaw&&!tgRaw)?'true':'false');
-  if(msg){ err.textContent=msg; err.hidden=false; (phRaw&&!phOK?phEl:(!phRaw&&!tgRaw?phEl:ag)).focus(); return; }
+  if(!ok){
+    err.textContent='Перевірте підсвічені поля.';
+    err.hidden=false;
+    var first=lf.querySelector('.fld.err input, .consent.err input');
+    if(first) first.focus();
+    return;
+  }
+  if(Date.now()-t0 < 2500){ err.textContent='Спробуйте ще раз за мить.'; err.hidden=false; return; }
 
   err.hidden=true;
-  var lead={name:nm, phone:phOK?'+'+phOK:'', telegram:normTG(tgRaw), page:location.href, ts:new Date().toISOString()};
-  var ok=document.getElementById('ok');
-  ok.innerHTML='<b>Заявку прийнято</b>'+nm+', ми повернемось протягом доби. '+
+  phFull.value = phOK || '';
+  var lead={name:nm, phone:phFull.value, telegram:normTG(tgRaw),
+            page:location.href, ts:new Date().toISOString()};
+  var okBox=document.getElementById('ok');
+  okBox.innerHTML='<b>Заявку прийнято</b>'+nm+', ми повернемось протягом доби. '+
     '(Макет: форму ще не підключено до пошти й Telegram.)';
-  ok.hidden=false;
-  this.hidden=true;
+  okBox.hidden=false;
+  lf.hidden=true;
 });
 })();
 </script>
