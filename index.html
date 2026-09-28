@@ -66,9 +66,16 @@ section{padding:74px 0}
 .btn.white:hover{background:#fff;color:var(--green-d);border-color:#fff}
 
 /* шапка */
-header{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07)}
+header{position:sticky;top:0;z-index:60;background:rgba(16,21,17,.92);
+  backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.07);transition:padding .18s,box-shadow .18s}
+@supports not (backdrop-filter:blur(2px)){header{background:var(--dark)}}
+header.stuck{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+header.stuck .wrap{padding-top:12px;padding-bottom:12px}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding-top:18px;padding-bottom:18px}
+  padding-top:18px;padding-bottom:18px;transition:padding .18s}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
 .logo b{font-family:var(--f-d);font-weight:800;font-size:24px;letter-spacing:.015em;color:#fff}
 .logo i{font-style:normal;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
@@ -85,8 +92,8 @@ nav a:hover{color:#fff}
 .hero-media{position:absolute;inset:0;overflow:hidden}
 .hero-frame{position:absolute;top:-11%;right:-4%;height:122%;aspect-ratio:1672/941}
 .hero-frame .photo{width:100%;height:100%;object-fit:cover;object-position:center}
-.laptop-screen{position:absolute;left:52.69%;top:25.61%;width:38.22%;height:42.19%;
-  object-fit:cover;object-position:top left;background:#fff}
+.laptop-screen{position:absolute;left:53.17%;top:26.04%;width:37.80%;height:40.91%;
+  object-fit:cover;object-position:top left;background:#fff;border-radius:2px}
 .hero-scrim{position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(96deg, rgba(16,21,17,.97) 0%, rgba(16,21,17,.93) 24%,
     rgba(16,21,17,.62) 41%, rgba(16,21,17,.14) 56%, rgba(16,21,17,0) 67%)}
@@ -101,6 +108,11 @@ nav a:hover{color:#fff}
   display:flex;align-items:center;justify-content:center;color:var(--green);flex:none}
 .float b{display:block;font-family:var(--f-d);font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.2}
 .float span{font-size:12.5px;color:var(--ink-3)}
+.float.f2{left:47.5%;top:23%;min-width:0;padding:10px 14px}
+.float.f3{left:45%;top:73%;min-width:0;padding:10px 14px}
+.float .up{color:var(--green);font-weight:800;font-family:var(--f-d);font-size:15px}
+.float.warn .ico{background:#FDF0E3;color:#B4761F}
+@media(max-width:1200px){.float.f2,.float.f3{display:none}}
 @media(max-width:900px){
   .hero{height:auto;padding:52px 0 48px}
   .hero-frame{position:absolute;inset:0;top:0;right:0;height:100%;width:100%;aspect-ratio:auto}
@@ -226,8 +238,9 @@ nav a:hover{color:#fff}
 
 
 /* фото зелені збоку блоку «кому підійде» */
-.split3{display:grid;grid-template-columns:.8fr 1.3fr 196px;gap:36px;align-items:start}
-.sidephoto{border-radius:var(--r);overflow:hidden;align-self:stretch;min-height:320px}
+.split3{display:grid;grid-template-columns:.8fr 1.3fr 196px;gap:36px;align-items:stretch}
+.sidephoto{border-radius:var(--r);overflow:hidden;align-self:stretch;min-height:260px}
+.split3>div:first-child{align-self:start}
 .sidephoto img{width:100%;height:100%;object-fit:cover}
 @media(max-width:1140px){.split3{grid-template-columns:.85fr 1.25fr}.sidephoto{display:none}}
 @media(max-width:980px){.split3{grid-template-columns:1fr;gap:30px}}
@@ -326,10 +339,18 @@ footer .todo{background:rgba(201,162,39,.18);border:1px dashed rgba(201,162,39,.
   <div class="hero-media">
     <div class="hero-frame">
       <img class="photo" src="shots/hero-full.jpg" alt="" width="1672" height="941">
-      <img class="laptop-screen" src="shots/board.png" alt="Дошка замовлень у системі LAD" width="3200" height="2000">
+      <img class="laptop-screen" src="shots/dashboard.png" alt="Дашборд керівника у системі LAD" width="3200" height="2000">
       <div class="float">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
         <span><b>Нова заявка</b><span>Вебсайт · 12:24</span></span>
+      </div>
+      <div class="float f2">
+        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg></span>
+        <span><b>Заявки за тиждень <i class="up">+15%</i></b><span>Дашборд власника</span></span>
+      </div>
+      <div class="float f3 warn">
+        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <span><b>Дедлайн завтра</b><span>2 задачі · Олег М.</span></span>
       </div>
     </div>
     <div class="hero-scrim"></div>
@@ -800,6 +821,12 @@ lf.addEventListener('submit',function(e){
   okBox.hidden=false;
   lf.hidden=true;
 });
+
+// тінь під шапкою, коли сторінку прокрутили
+var hdr=document.querySelector('header');
+function onScroll(){ hdr.classList.toggle('stuck', window.scrollY>8); }
+onScroll();
+window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
 </body>
