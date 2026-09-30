@@ -759,6 +759,25 @@ function pick(i){
 }
 pick(0);
 
+// ---- UTM-мітки: ловимо на вході і тримаємо весь візит ----
+function utm(){
+  var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  var p = new URLSearchParams(location.search);
+  var got = {}, has = false;
+  keys.forEach(function(k){ var v = p.get(k); if(v){ got[k] = v; has = true; } });
+  var fb = p.get('fbclid'); if(fb){ got.fbclid = fb; has = true; }
+  try{
+    if(has) sessionStorage.setItem('lad_utm', JSON.stringify(got));
+    else { var saved = sessionStorage.getItem('lad_utm'); if(saved) got = JSON.parse(saved); }
+  }catch(e){}
+  return got;
+}
+function utmLabel(u){
+  if(!u || !u.utm_source) return u && u.fbclid ? 'facebook (без міток)' : 'прямий/органіка';
+  return [u.utm_source, u.utm_medium, u.utm_campaign, u.utm_content]
+         .filter(Boolean).join(' / ');
+}
+
 // ---- куди відправляється заявка (Apps Script / бекенд). Порожньо = тільки редірект ----
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycby1t5BsDzEQjocVs3prLGbnKChV33t3RJkUKsh19Vl-c0N6FtW7Gr3c4DBwdnmvPeQt/exec';
 
@@ -789,6 +808,7 @@ function normTG(raw){
   return v?'@'+v:'';
 }
 
+utm();
 var lf=document.getElementById('lead');
 var nmEl=document.getElementById('f-name'), phEl=document.getElementById('f-phone'),
     phFull=document.getElementById('f-phone-full'), tgEl=document.getElementById('f-tg'),
@@ -837,7 +857,10 @@ lf.addEventListener('submit',function(e){
 
   err.hidden=true;
   phFull.value = phOK || '';
+  var u = utm();
   var lead = {name:nm, phone:phFull.value, telegram:normTG(tgRaw),
+              ad:utmLabel(u), source:u.utm_source||'', campaign:u.utm_campaign||'',
+              creative:u.utm_content||'',
               page:location.href, ref:document.referrer,
               ts:new Date().toISOString()};
 
